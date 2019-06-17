@@ -266,7 +266,7 @@ public class EmployeeController {
 		int i = trafficService.insert(traffic);
 		if(i > 0) {
 			
-			return "forward:/font/search.action";
+			return "forward:/font/search2.action";
 		}
 		return "font/shenbao";
 	}

@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt"  prefix="fmt"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -13,7 +12,12 @@
         <link href="${pageContext.request.contextPath }/css/bootstrap-theme.min.css" rel="stylesheet" media="screen">
         <link href="${pageContext.request.contextPath }/css/bootstrap-admin-theme.css" rel="stylesheet" media="screen">
         <link href="${pageContext.request.contextPath }/css/stytle.css" rel="stylesheet" media="screen" />
-       
+        <script type="text/javascript" src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+        <script type="text/javascript">
+        	function formSubmit(){
+    			document.forms[0].submit();
+			}
+        </script>
     </head>
     <body class="bootstrap-admin-with-small-navbar">
 		<nav class="navbar navbar-default navbar-inverse navbar-fixed-top " role="navigation">
@@ -24,14 +28,13 @@
             <!-- left, vertical navbar & content -->
             <div class="row">
                 <!-- left, vertical navbar -->
-
                 <div class="col-md-3"> 
                    <div class="panel panel-default"> 
                     <div class="panel-heading"> 
                       ホームページ
                     </div> 
                     <div class="list-group">
-                    <a class="list-group-item active" href="${pageContext.request.contextPath }/admin/admin.action"><i class="fa fa-fw fa-gear"></i> ホームページ </a> 
+                    <a class="list-group-item" href="${pageContext.request.contextPath }/admin/admin.action"><i class="fa fa-fw fa-gear"></i> ホームページ </a> 
                     </div> 
                    </div> 
                    <div class="panel panel-default"> 
@@ -49,8 +52,8 @@
                       データ作成 
                     </div> 
                     <div class="list-group"> 
-                     <a class="list-group-item" href="${pageContext.request.contextPath }/admin/forms.action"><i class="fa fa-fw fa-gear"></i> 社員給与入力 </a>
-                     <a class="list-group-item " href="${pageContext.request.contextPath }/admin/forms2.action"><i class="fa fa-fw fa-lock"></i> 社員情報入力 </a>
+                     <a class="list-group-item " href="${pageContext.request.contextPath }/admin/forms.action"><i class="fa fa-fw fa-gear"></i> 社員給与入力 </a>
+                     <a class="list-group-item  active" href="${pageContext.request.contextPath }/admin/forms2.action"><i class="fa fa-fw fa-lock"></i> 社員情報入力 </a>
                     <a class="list-group-item " href="${pageContext.request.contextPath }/admin/forms3.action"><i class="fa fa-fw fa-gear"></i> 公告入力 </a>
                     </div> 
                    </div> 
@@ -62,7 +65,7 @@
                      <a class="list-group-item" href="${pageContext.request.contextPath }/admin/guanli.action"><i class="fa fa-fw fa-gear"></i> 経費申込 </a>
                      <a class="list-group-item " href="${pageContext.request.contextPath }/admin/guanli2.action"><i class="fa fa-fw fa-lock"></i> 社員給与 </a>
                      <a class="list-group-item " href="${pageContext.request.contextPath }/admin/guanli3.action"><i class="fa fa-fw fa-sign-in"></i> 社員情報 </a>
-                     <a class="list-group-item " href="${pageContext.request.contextPath }/admin/guanli4.action"><i class="fa fa-fw fa-sign-in"></i> 公告</a>
+                     <a class="list-group-item " href="${pageContext.request.contextPath }/admin/guanli4.action"><i class="fa fa-fw fa-sign-in"></i> 公告 </a>
                     </div> 
                    </div> 
                    <div class="panel panel-default"> 
@@ -86,23 +89,64 @@
                 <!-- content -->
                 <div class="col-md-9">
 					
-                    <div class="row" >
-                       <ul class="alert alert-info js-dashboard-info js-for-admin topInfoContainer animeStart">
-                       <c:forEach items="${gongGaoList }" var="gongGao" varStatus="s">
-                                        
-                        	<li>
-      							<a href="#" >
-        							<span class="date">${fn:substring(gongGao.gonggaodate, 0, 10)}</span>
-        							<span class="title left-buffer-10">${ gongGao.gonggaotitle  }</span>
-      							</a>
-    						</li>
-                         </c:forEach>
-                       	
-    					
-    					</ul>
+                    
+                    <div class="row">
+                    <form method="post" action="${pageContext.request.contextPath }/admin/employeezhuce.action" class="form-horizontal">
+                        <div class="panel panel-default">
+                            
+                            
+                            <div class="bootstrap-admin-panel-content">
+                             <table class="table table-striped table-bordered" id="example">
+                            	<input type="hidden" name="adminid"  value = "${ adminid}" />
+                            	<thead>
+                                        <tr>
+                                            <th >アカウント</th>
+                                            <th >パスワード</th>
+                                            <th >名前</th>
+                                            <th >連絡先</th>
+                                            <th >诞生日</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    	
+                                        <tr class="gradeA">
+                                        	<input type="hidden" name="adminid"  value = "${ adminid}" />
+                                            <td ><input type="text"class="col-lg-12" name="employeeaccount" ></td>
+                                            <td ><input type="text"class="col-lg-12" name="employeepassword" ></td>
+                                            <td ><input type="text"class="col-lg-12" name="employeename" ></td>
+                                            <td ><input type="text"class="col-lg-12" name="employeecontact" ></td>
+                                            <td ><input id = "employeebirth" class="col-lg-12" type="date" name="employeebirth" /></td>
+                                        </tr>
+                                    </tbody>
+                            	</table>    
+                            	
+                            	<button type="button" class="btn btn-lg btn-primary" onclick="formSubmit()">确认</button>
+                            	                  
+                            </div>
+                        </div>
+                        
+                    </form>
                     </div>
+                    
 				</div>
            </div>    
         </div>
+        <script language="JavaScript"> 
+        
+			var today=new Date();
+			if(today.getMonth()<10){
+				if(today.getDate()<10){
+					document.getElementById("employeebirth").value=today.getFullYear()+"-"+"0"+today.getMonth()+"-"+"0"+today.getDate();
+				}
+				document.getElementById("employeebirth").value=today.getFullYear()+"-"+"0"+today.getMonth()+"-"+today.getDate();
+			}else{
+				if(today.getDate()<10){
+					document.getElementById("employeebirth").value=today.getFullYear()+"-"+today.getMonth()+"-"+"0"+today.getDate();
+				}
+				document.getElementById("employeebirth").value=today.getFullYear()+"-"+today.getMonth()+"-"+today.getDate();
+			}
+			
+       
+		</script>
     </body>
 </html>

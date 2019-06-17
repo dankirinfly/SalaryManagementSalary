@@ -1,27 +1,44 @@
-a:118)
-	at org.eclipse.wst.web.internal.deployables.FlatComponentDeployable.members(FlatComponentDeployable.java:234)
-	at org.eclipse.jst.j2ee.internal.deployables.J2EEFlexProjDeployable.members(J2EEFlexProjDeployable.java:272)
-	at org.eclipse.wst.server.core.internal.ModulePublishInfo.hasDelta(ModulePublishInfo.java:435)
-	at org.eclipse.wst.server.core.internal.ServerPublishInfo.hasDelta(ServerPublishInfo.java:440)
-	at org.eclipse.wst.server.core.internal.Server.hasPublishedResourceDelta(Server.java:1600)
-	at org.eclipse.wst.server.core.internal.Server$ResourceChangeJob$1.visit(Server.java:217)
-	at org.eclipse.wst.server.core.internal.Server.visitModule(Server.java:3065)
-	at org.eclipse.wst.server.core.internal.Server.visit(Server.java:3049)
-	at org.eclipse.wst.server.core.internal.Server$ResourceChangeJob.run(Server.java:233)
-	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
-
-!ENTRY org.eclipse.jst.j2ee 4 0 2019-06-17 22:06:49.563
-!MESSAGE F:\workbase\tkzSalary\WebContent\WEB-INF\lib\druid-1.0.9.jar
-!STACK 0
-java.io.FileNotFoundException: F:\workbase\tkzSalary\WebContent\WEB-INF\lib\druid-1.0.9.jar
-	at org.eclipse.jst.j2ee.internal.componentcore.JavaEEBinaryComponentLoadAdapter.physicallyOpen(JavaEEBinaryComponentLoadAdapter.java:105)
-	at org.eclipse.jst.j2ee.internal.componentcore.JavaEEBinaryComponentHelper$ArchiveCache.accessArchive(JavaEEBinaryComponentHelper.java:534)
-	at org.eclipse.jst.j2ee.internal.componentcore.JavaEEBinaryComponentHelper.openArchive(JavaEEBinaryComponentHelper.java:473)
-	at org.eclipse.jst.j2ee.internal.componentcore.JavaEEBinaryComponentHelper.getUniqueArchive(JavaEEBinaryComponentHelper.java:422)
-	at org.eclipse.jst.j2ee.internal.componentcore.JavaEEBinaryComponentHelper.getArchive(JavaEEBinaryComponentHelper.java:415)
-	at org.eclipse.jst.j2ee.internal.componentcore.JavaEEBinaryComponentHelper.getJavaEEQuickPeek(JavaEEBinaryComponentHelper.java:98)
-	at org.eclipse.jst.j2ee.project.JavaEEProjectUtilities.getJ2EEComponentType(JavaEEProjectUtilities.java:273)
-	at org.eclipse.jst.j2ee.internal.common.exportmodel.JEEHeirarchyExportParticipant.isChildModule(JEEHeirarchyExportParticipant.java:81)
-	at org.eclipse.wst.common.componentcore.internal.flat.GlobalHeirarchyParticipant.isChildModule(GlobalHeirarchyParticipant.java:52)
-	at org.eclipse.wst.common.componentcore.internal.flat.FlatVirtualComponent.shouldAddComponentFile(FlatVirtualComponent.java:284)
-	at org.eclipse.wst.common.componentcore.internal.
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html class="bootstrap-admin-vertical-centered">
+    <head>
+        <title>adminlogin</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="${pageContext.request.contextPath }/css/bootstrap.min.css" rel="stylesheet" media="screen">
+        <link href="${pageContext.request.contextPath }/css/bootstrap-theme.min.css" rel="stylesheet" media="screen">
+        <link href="${pageContext.request.contextPath }/css/bootstrap-admin-theme.css" rel="stylesheet" media="screen">
+        <link href="${pageContext.request.contextPath }/css/stytle.css" rel="stylesheet" media="screen" />
+        <script type="text/javascript" src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+        <script type="text/javascript">
+        	function tijiao(id){
+        		 var path = "/tkzSalary/admin/login.action";
+        		 $('#loginform').attr("action", path).submit();    
+        	}
+        	function xiugai(id){
+        		 var path = "/tkzSalary/admin/toadminxiugai.action"; 
+        		 $('#loginform').attr("action", path).submit(); 
+        	}
+        </script>
+    </head>
+    <body class="bootstrap-admin-without-padding">
+    	<nav class="navbar navbar-default navbar-inverse navbar-fixed-top " role="navigation">
+			<h1 align="center" style="color:FloralWhite;">タレントキリンズ株式会社　給与管理システム</h1>
+		</nav>
+        <div class="container">
+            <div class="row">
+                <form id = "loginform" method="post" action="" class="bootstrap-admin-login-form">
+                    <h1>登录</h1>
+                    <div class="form-group">
+                        <input class="form-control" type="text" name="adminaccount" placeholder="账号" value = "">
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" type="password" name="adminpassword" placeholder="密码" value = "">
+                    </div>
+                    <button type="button" class="btn btn-lg btn-primary" onclick="tijiao()">ログイン</button>
+                    <button type="button" class="btn btn-lg btn-primary" onclick="xiugai()">パスワード変更</button>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,13 +1,70 @@
-yComponentHelper.java:422)
-	at org.eclipse.jst.j2ee.internal.componentcore.JavaEEBinaryComponentHelper.getArchive(JavaEEBinaryComponentHelper.java:415)
-	at org.eclipse.jst.j2ee.internal.componentcore.JavaEEBinaryComponentHelper.getJavaEEQuickPeek(JavaEEBinaryComponentHelper.java:98)
-	at org.eclipse.jst.j2ee.project.JavaEEProjectUtilities.getJ2EEComponentType(JavaEEProjectUtilities.java:273)
-	at org.eclipse.jst.j2ee.internal.common.exportmodel.JEEHeirarchyExportParticipant.isChildModule(JEEHeirarchyExportParticipant.java:81)
-	at org.eclipse.wst.common.componentcore.internal.flat.GlobalHeirarchyParticipant.isChildModule(GlobalHeirarchyParticipant.java:52)
-	at org.eclipse.wst.common.componentcore.internal.flat.FlatVirtualComponent.shouldAddComponentFile(FlatVirtualComponent.java:284)
-	at org.eclipse.wst.common.componentcore.internal.flat.VirtualComponentFlattenUtility.addFile(VirtualComponentFlattenUtility.java:123)
-	at org.eclipse.wst.common.componentcore.internal.flat.VirtualComponentFlattenUtility.addMembersInternal(VirtualComponentFlattenUtility.java:99)
-	at org.eclipse.wst.common.componentcore.internal.flat.VirtualComponentFlattenUtility.addMembersInternal(VirtualComponentFlattenUtility.java:96)
-	at org.eclipse.wst.common.componentcore.internal.flat.VirtualComponentFlattenUtility.addMembersInternal(VirtualComponentFlattenUtility.java:96)
-	at org.eclipse.wst.common.componentcore.internal.flat.VirtualComponentFlattenUtility.addMembers(VirtualComponentFlattenUtility.java:51)
-	at org.eclipse.wst.common.componentcore.internal.
+// DATA_TEMPLATE: js_data
+oTest.fnStart( "oLanguage.sSearch" );
+
+$(document).ready( function () {
+	/* Check the default */
+	var oTable = $('#example').dataTable( {
+		"aaData": gaaData
+	} );
+	var oSettings = oTable.fnSettings();
+	
+	oTest.fnTest( 
+		"Search language is 'Search:' by default",
+		null,
+		function () { return oSettings.oLanguage.sSearch == "Search:"; }
+	);
+	
+	oTest.fnTest(
+		"A label input is used",
+		null,
+		function () { return $('label', oSettings.aanFeatures.f[0]).length == 1 }
+	);
+	
+	oTest.fnTest( 
+		"Search language default is in the DOM",
+		null,
+		function () { return $('label', oSettings.aanFeatures.f[0]).text()
+		 	== "Search: "; }
+	);
+	
+	
+	oTest.fnTest( 
+		"Search language can be defined",
+		function () {
+			oSession.fnRestore();
+			oTable = $('#example').dataTable( {
+				"aaData": gaaData,
+				"oLanguage": {
+					"sSearch": "unit test"
+				}
+			} );
+			oSettings = oTable.fnSettings();
+		},
+		function () { return oSettings.oLanguage.sSearch == "unit test"; }
+	);
+	
+	oTest.fnTest( 
+		"Info language definition is in the DOM",
+		null,
+		function () { return $('label', oSettings.aanFeatures.f[0]).text().indexOf('unit test') !== -1; }
+	);
+	
+	
+	oTest.fnTest( 
+		"Blank search has a no (separator) inserted",
+		function () {
+			oSession.fnRestore();
+			oTable = $('#example').dataTable( {
+				"aaData": gaaData,
+				"oLanguage": {
+					"sSearch": ""
+				}
+			} );
+			oSettings = oTable.fnSettings();
+		},
+		function () { return document.getElementById('example_filter').childNodes.length == 1; }
+	);
+	
+	
+	oTest.fnComplete();
+} );

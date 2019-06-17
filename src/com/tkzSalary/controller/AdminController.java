@@ -226,7 +226,7 @@ public class AdminController {
 		}
 		int i = employeeService.insert(employee);
 		if (i == 1) {
-			return "forward:/admin/search.action";
+			return "forward:/admin/search3.action";
 		}
 		return "admin/forms";
 	}
@@ -348,7 +348,7 @@ public class AdminController {
 		if (traffic != null) {
 			int i = trafficService.deleteByPrimaryKey(trafficid);
 			if (i == 1) {
-				return "forward:/admin/search.action";
+				return "forward:/admin/search2.action";
 			}
 		}
 		return "admin/forms";
@@ -406,7 +406,7 @@ public class AdminController {
 		if (employee != null) {
 			int i = employeeService.deleteByPrimaryKey(employeeid);
 			if (i == 1) {
-				return "forward:/admin/search.action";
+				return "forward:/admin/search3.action";
 			}
 		}
 		return "admin/forms";
@@ -485,7 +485,7 @@ public class AdminController {
 		traffic.setVerifystatus(2);
 		int i = trafficService.updateByPrimaryKey(traffic);
 		if (i == 1) {
-			return "forward:/admin/search.action";
+			return "forward:/admin/shenhe.action";
 		}
 		return "admin/shenhe";
 	}

@@ -52,7 +52,7 @@
                             		<label >公告時間</label>
                             		</div>
                             		<div  >
-                            		<input id = "gonggao"  type="date" name="gonggaodate" value="${ gongGao.gonggaodate}"/>
+                            		<input id = "gonggao"  type="date" name="gonggaodate" value="${fn:substring(gongGao.gonggaodate, 0, 10)}"/>
                             	</div>
                             	<div  >
                             		<label >公告の概要</label>
