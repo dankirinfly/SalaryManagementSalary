@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tkzSalary.dao.EmployeeMapper">
+  <resultMap id="BaseResultMap" type="com.tkzSalary.pojo.Employee">
+    <id column="employeeID" jdbcType="INTEGER" property="employeeid" />
+    <result column="adminID" jdbcType="INTEGER" property="adminid" />
+    <result column="employeeAccount" jdbcType="VARCHAR" property="employeeaccount" />
+    <result column="employeePassword" jdbcType="VARCHAR" property="employeepassword" />
+    <result column="employeeName" jdbcType="VARCHAR" property="employeename" />
+    <result column="employeeContact" jdbcType="VARCHAR" property="employeecontact" />
+    <result column="employeeBirth" jdbcType="DATE" property="employeebirth" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    employeeID, adminID, employeeAccount, employeePassword, employeeName, employeeContact, 
+    employeeBirth
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from employee_tbl
+    where employeeID = #{employeeid,jdbcType=INTEGER}
+  </select>
+  
+  <select id="getEmployeeByNameAndPassword" parameterType="com.tkzSalary.pojo.Employee" resultMap="BaseResultMap">
+   select  
+   <include refid="Base_Column_List" />  
+   from employee_tbl   
+   where employeeAccount =  #{employeeaccount,jdbcType=VARCHAR} and employeePassword=#{employeepassword,jdbcType=VARCHAR}
+  </select>
+  
+  <select id="findEmployeeList"  resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" /> 
+    from employee_tbl
+   </select>
+   
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from employee_tbl
+    where employeeID = #{employeeid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.tkzSalary.pojo.Employee">
+    insert into employee_tbl (employeeID, adminID, employeeAccount, 
+      employeePassword, employeeName, employeeContact, 
+      employeeBirth)
+    values (#{employeeid,jdbcType=INTEGER}, #{adminid,jdbcType=INTEGER}, #{employeeaccount,jdbcType=VARCHAR}, 
+      #{employeepassword,jdbcType=VARCHAR}, #{employeename,jdbcType=VARCHAR}, #{employeecontact,jdbcType=VARCHAR}, 
+      #{employeebirth,jdbcType=DATE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.tkzSalary.pojo.Employee">
+    insert into employee_tbl
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="employeeid != null">
+        employeeID,
+      </if>
+      <if test="adminid != null">
+        adminID,
+      </if>
+      <if test="employeeaccount != null">
+        employeeAccount,
+      </if>
+      <if test="employeepassword != null">
+        employeePassword,
+      </if>
+      <if test="employeename != null">
+        employeeName,
+      </if>
+      <if test="employeecontact != null">
+        employeeContact,
+      </if>
+      <if test="employeebirth != null">
+        employeeBirth,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="employeeid != null">
+        #{employeeid,jdbcType=INTEGER},
+      </if>
+      <if test="adminid != null">
+        #{adminid,jdbcType=INTEGER},
+      </if>
+      <if test="employeeaccount != null">
+        #{employeeaccount,jdbcType=VARCHAR},
+      </if>
+      <if test="employeepassword != null">
+        #{employeepassword,jdbcType=VARCHAR},
+      </if>
+      <if test="employeename != null">
+        #{employeename,jdbcType=VARCHAR},
+      </if>
+      <if test="employeecontact != null">
+        #{employeecontact,jdbcType=VARCHAR},
+      </if>
+      <if test="employeebirth != null">
+        #{employeebirth,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.tkzSalary.pojo.Employee">
+    update employee_tbl
+    <set>
+      <if test="adminid != null">
+        adminID = #{adminid,jdbcType=INTEGER},
+      </if>
+      <if test="employeeaccount != null">
+        employeeAccount = #{employeeaccount,jdbcType=VARCHAR},
+      </if>
+      <if test="employeepassword != null">
+        employeePassword = #{employeepassword,jdbcType=VARCHAR},
+      </if>
+      <if test="employeename != null">
+        employeeName = #{employeename,jdbcType=VARCHAR},
+      </if>
+      <if test="employeecontact != null">
+        employeeContact = #{employeecontact,jdbcType=VARCHAR},
+      </if>
+      <if test="employeebirth != null">
+        employeeBirth = #{employeebirth,jdbcType=DATE},
+      </if>
+    </set>
+    where employeeID = #{employeeid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.tkzSalary.pojo.Employee">
+    update employee_tbl
+    set adminID = #{adminid,jdbcType=INTEGER},
+      employeeAccount = #{employeeaccount,jdbcType=VARCHAR},
+      employeePassword = #{employeepassword,jdbcType=VARCHAR},
+      employeeName = #{employeename,jdbcType=VARCHAR},
+      employeeContact = #{employeecontact,jdbcType=VARCHAR},
+      employeeBirth = #{employeebirth,jdbcType=DATE}
+    where employeeID = #{employeeid,jdbcType=INTEGER}
+  </update>
+</mapper>

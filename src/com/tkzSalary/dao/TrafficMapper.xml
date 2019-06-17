@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tkzSalary.dao.TrafficMapper">
+  <resultMap id="BaseResultMap" type="com.tkzSalary.pojo.Traffic">
+    <id column="trafficID" jdbcType="INTEGER" property="trafficid" />
+    <result column="employeeID" jdbcType="INTEGER" property="employeeid" />
+    <result column="trafficExpense" jdbcType="INTEGER" property="trafficexpense" />
+    <result column="trafficExpenseType" jdbcType="INTEGER" property="trafficexpensetype" />
+    <result column="trafficTime" jdbcType="DATE" property="traffictime" />
+    <result column="trafficSection" jdbcType="VARCHAR" property="trafficsection" />
+    <result column="verifyStatus" jdbcType="INTEGER" property="verifystatus" />
+    <result column="failedReason" jdbcType="VARCHAR" property="failedreason" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    trafficID, employeeID, trafficExpense, trafficExpenseType, trafficTime, trafficSection, 
+    verifyStatus, failedReason
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from traffic_tbl
+    where trafficID = #{trafficid,jdbcType=INTEGER}
+  </select>
+  <select id="findTrafficList"  resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from traffic_tbl
+  </select>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from traffic_tbl
+    where trafficID = #{trafficid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.tkzSalary.pojo.Traffic">
+    insert into traffic_tbl (trafficID, employeeID, trafficExpense, 
+      trafficExpenseType, trafficTime, trafficSection, 
+      verifyStatus, failedReason)
+    values (#{trafficid,jdbcType=INTEGER}, #{employeeid,jdbcType=INTEGER}, #{trafficexpense,jdbcType=INTEGER}, 
+      #{trafficexpensetype,jdbcType=INTEGER}, #{traffictime,jdbcType=DATE}, #{trafficsection,jdbcType=VARCHAR}, 
+      #{verifystatus,jdbcType=INTEGER}, #{failedreason,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.tkzSalary.pojo.Traffic">
+    insert into traffic_tbl
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="trafficid != null">
+        trafficID,
+      </if>
+      <if test="employeeid != null">
+        employeeID,
+      </if>
+      <if test="trafficexpense != null">
+        trafficExpense,
+      </if>
+      <if test="trafficexpensetype != null">
+        trafficExpenseType,
+      </if>
+      <if test="traffictime != null">
+        trafficTime,
+      </if>
+      <if test="trafficsection != null">
+        trafficSection,
+      </if>
+      <if test="verifystatus != null">
+        verifyStatus,
+      </if>
+      <if test="failedreason != null">
+        failedReason,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="trafficid != null">
+        #{trafficid,jdbcType=INTEGER},
+      </if>
+      <if test="employeeid != null">
+        #{employeeid,jdbcType=INTEGER},
+      </if>
+      <if test="trafficexpense != null">
+        #{trafficexpense,jdbcType=INTEGER},
+      </if>
+      <if test="trafficexpensetype != null">
+        #{trafficexpensetype,jdbcType=INTEGER},
+      </if>
+      <if test="traffictime != null">
+        #{traffictime,jdbcType=DATE},
+      </if>
+      <if test="trafficsection != null">
+        #{trafficsection,jdbcType=VARCHAR},
+      </if>
+      <if test="verifystatus != null">
+        #{verifystatus,jdbcType=INTEGER},
+      </if>
+      <if test="failedreason != null">
+        #{failedreason,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.tkzSalary.pojo.Traffic">
+    update traffic_tbl
+    <set>
+      <if test="employeeid != null">
+        employeeID = #{employeeid,jdbcType=INTEGER},
+      </if>
+      <if test="trafficexpense != null">
+        trafficExpense = #{trafficexpense,jdbcType=INTEGER},
+      </if>
+      <if test="trafficexpensetype != null">
+        trafficExpenseType = #{trafficexpensetype,jdbcType=INTEGER},
+      </if>
+      <if test="traffictime != null">
+        trafficTime = #{traffictime,jdbcType=DATE},
+      </if>
+      <if test="trafficsection != null">
+        trafficSection = #{trafficsection,jdbcType=VARCHAR},
+      </if>
+      <if test="verifystatus != null">
+        verifyStatus = #{verifystatus,jdbcType=INTEGER},
+      </if>
+      <if test="failedreason != null">
+        failedReason = #{failedreason,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where trafficID = #{trafficid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.tkzSalary.pojo.Traffic">
+    update traffic_tbl
+    set employeeID = #{employeeid,jdbcType=INTEGER},
+      trafficExpense = #{trafficexpense,jdbcType=INTEGER},
+      trafficExpenseType = #{trafficexpensetype,jdbcType=INTEGER},
+      trafficTime = #{traffictime,jdbcType=DATE},
+      trafficSection = #{trafficsection,jdbcType=VARCHAR},
+      verifyStatus = #{verifystatus,jdbcType=INTEGER},
+      failedReason = #{failedreason,jdbcType=VARCHAR}
+    where trafficID = #{trafficid,jdbcType=INTEGER}
+  </update>
+</mapper>

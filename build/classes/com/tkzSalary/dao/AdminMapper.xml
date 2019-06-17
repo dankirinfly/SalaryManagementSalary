@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tkzSalary.dao.AdminMapper">
+  <resultMap id="BaseResultMap" type="com.tkzSalary.pojo.Admin">
+    <id column="adminID" jdbcType="INTEGER" property="adminid" />
+    <result column="adminAccount" jdbcType="VARCHAR" property="adminaccount" />
+    <result column="adminPassword" jdbcType="VARCHAR" property="adminpassword" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    adminID, adminAccount, adminPassword
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from admin_tbl
+    where adminID = #{adminid,jdbcType=INTEGER}
+  </select>
+  <select id="getAdminByNameAndPassword" parameterType="com.tkzSalary.pojo.Admin" resultMap="BaseResultMap">
+   select  
+   <include refid="Base_Column_List" />  
+   from admin_tbl   
+   where adminAccount =  #{adminaccount,jdbcType=VARCHAR} and adminPassword=#{adminpassword,jdbcType=VARCHAR}
+  </select>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from admin_tbl
+    where adminID = #{adminid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.tkzSalary.pojo.Admin">
+    insert into admin_tbl (adminID, adminAccount, adminPassword
+      )
+    values (#{adminid,jdbcType=INTEGER}, #{adminaccount,jdbcType=VARCHAR}, #{adminpassword,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.tkzSalary.pojo.Admin">
+    insert into admin_tbl
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="adminid != null">
+        adminID,
+      </if>
+      <if test="adminaccount != null">
+        adminAccount,
+      </if>
+      <if test="adminpassword != null">
+        adminPassword,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="adminid != null">
+        #{adminid,jdbcType=INTEGER},
+      </if>
+      <if test="adminaccount != null">
+        #{adminaccount,jdbcType=VARCHAR},
+      </if>
+      <if test="adminpassword != null">
+        #{adminpassword,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.tkzSalary.pojo.Admin">
+    update admin_tbl
+    <set>
+      <if test="adminaccount != null">
+        adminAccount = #{adminaccount,jdbcType=VARCHAR},
+      </if>
+      <if test="adminpassword != null">
+        adminPassword = #{adminpassword,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where adminID = #{adminid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.tkzSalary.pojo.Admin">
+    update admin_tbl
+    set adminAccount = #{adminaccount,jdbcType=VARCHAR},
+      adminPassword = #{adminpassword,jdbcType=VARCHAR}
+    where adminID = #{adminid,jdbcType=INTEGER}
+  </update>
+</mapper>

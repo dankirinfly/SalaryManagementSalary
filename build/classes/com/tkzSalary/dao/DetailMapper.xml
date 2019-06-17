@@ -1,0 +1,423 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tkzSalary.dao.DetailMapper">
+  <resultMap id="BaseResultMap" type="com.tkzSalary.pojo.Detail">
+    <id column="detailID" jdbcType="INTEGER" property="detailid" />
+    <result column="employeeID" jdbcType="INTEGER" property="employeeid" />
+    <result column="workTime" jdbcType="DATE" property="worktime" />
+    <result column="payTime" jdbcType="DATE" property="paytime" />
+    <result column="workDays" jdbcType="REAL" property="workdays" />
+    <result column="attendanceDays" jdbcType="REAL" property="attendancedays" />
+    <result column="absenceDays" jdbcType="REAL" property="absencedays" />
+    <result column="unemployedDays" jdbcType="REAL" property="unemployeddays" />
+    <result column="spareHoliday" jdbcType="REAL" property="spareholiday" />
+    <result column="usedHoliday" jdbcType="REAL" property="usedholiday" />
+    <result column="normalOvertime" jdbcType="REAL" property="normalovertime" />
+    <result column="specialOvertime" jdbcType="REAL" property="specialovertime" />
+    <result column="basicPay" jdbcType="INTEGER" property="basicpay" />
+    <result column="trafficExpense" jdbcType="INTEGER" property="trafficexpense" />
+    <result column="totalSalary" jdbcType="INTEGER" property="totalsalary" />
+    <result column="healthInsurance" jdbcType="INTEGER" property="healthinsurance" />
+    <result column="careInsurance" jdbcType="INTEGER" property="careinsurance" />
+    <result column="welfarePension" jdbcType="INTEGER" property="welfarepension" />
+    <result column="pensionFund" jdbcType="INTEGER" property="pensionfund" />
+    <result column="adjustSocial" jdbcType="INTEGER" property="adjustsocial" />
+    <result column="employInsurance" jdbcType="INTEGER" property="employinsurance" />
+    <result column="legalDeduction" jdbcType="INTEGER" property="legaldeduction" />
+    <result column="incomeTax" jdbcType="INTEGER" property="incometax" />
+    <result column="inlandTax" jdbcType="INTEGER" property="inlandtax" />
+    <result column="dependNumber" jdbcType="INTEGER" property="dependnumber" />
+    <result column="totalDeduction" jdbcType="INTEGER" property="totaldeduction" />
+    <result column="adjustSalary" jdbcType="INTEGER" property="adjustsalary" />
+    <result column="grandTotalDeduction" jdbcType="INTEGER" property="grandtotaldeduction" />
+    <result column="totalTaxation" jdbcType="INTEGER" property="totaltaxation" />
+    <result column="totalTaxExempt" jdbcType="INTEGER" property="totaltaxexempt" />
+    <result column="monthTrafficExpense" jdbcType="INTEGER" property="monthtrafficexpense" />
+    <result column="substractionSupply" jdbcType="INTEGER" property="substractionsupply" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    detailID, employeeID, workTime, payTime, workDays, attendanceDays, absenceDays, unemployedDays, 
+    spareHoliday, usedHoliday, normalOvertime, specialOvertime, basicPay, trafficExpense, 
+    totalSalary, healthInsurance, careInsurance, welfarePension, pensionFund, adjustSocial, 
+    employInsurance, legalDeduction, incomeTax, inlandTax, dependNumber, totalDeduction, 
+    adjustSalary, grandTotalDeduction, totalTaxation, totalTaxExempt, monthTrafficExpense, 
+    substractionSupply
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from detail_tbl
+    where detailID = #{detailid,jdbcType=INTEGER}
+  </select>
+  
+  <select id="findDetailList"  resultMap="BaseResultMap">
+      select 
+      <include refid="Base_Column_List" /> 
+      from detail_tbl
+   </select>
+
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from detail_tbl
+    where detailID = #{detailid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.tkzSalary.pojo.Detail">
+    insert into detail_tbl (detailID, employeeID, workTime, 
+      payTime, workDays, attendanceDays, 
+      absenceDays, unemployedDays, spareHoliday, 
+      usedHoliday, normalOvertime, specialOvertime, 
+      basicPay, trafficExpense, totalSalary, 
+      healthInsurance, careInsurance, welfarePension, 
+      pensionFund, adjustSocial, employInsurance, 
+      legalDeduction, incomeTax, inlandTax, 
+      dependNumber, totalDeduction, adjustSalary, 
+      grandTotalDeduction, totalTaxation, totalTaxExempt, 
+      monthTrafficExpense, substractionSupply
+      )
+    values (#{detailid,jdbcType=INTEGER}, #{employeeid,jdbcType=INTEGER}, #{worktime,jdbcType=DATE}, 
+      #{paytime,jdbcType=DATE}, #{workdays,jdbcType=REAL}, #{attendancedays,jdbcType=REAL}, 
+      #{absencedays,jdbcType=REAL}, #{unemployeddays,jdbcType=REAL}, #{spareholiday,jdbcType=REAL}, 
+      #{usedholiday,jdbcType=REAL}, #{normalovertime,jdbcType=REAL}, #{specialovertime,jdbcType=REAL}, 
+      #{basicpay,jdbcType=INTEGER}, #{trafficexpense,jdbcType=INTEGER}, #{totalsalary,jdbcType=INTEGER}, 
+      #{healthinsurance,jdbcType=INTEGER}, #{careinsurance,jdbcType=INTEGER}, #{welfarepension,jdbcType=INTEGER}, 
+      #{pensionfund,jdbcType=INTEGER}, #{adjustsocial,jdbcType=INTEGER}, #{employinsurance,jdbcType=INTEGER}, 
+      #{legaldeduction,jdbcType=INTEGER}, #{incometax,jdbcType=INTEGER}, #{inlandtax,jdbcType=INTEGER}, 
+      #{dependnumber,jdbcType=INTEGER}, #{totaldeduction,jdbcType=INTEGER}, #{adjustsalary,jdbcType=INTEGER}, 
+      #{grandtotaldeduction,jdbcType=INTEGER}, #{totaltaxation,jdbcType=INTEGER}, #{totaltaxexempt,jdbcType=INTEGER}, 
+      #{monthtrafficexpense,jdbcType=INTEGER}, #{substractionsupply,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.tkzSalary.pojo.Detail">
+    insert into detail_tbl
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="detailid != null">
+        detailID,
+      </if>
+      <if test="employeeid != null">
+        employeeID,
+      </if>
+      <if test="worktime != null">
+        workTime,
+      </if>
+      <if test="paytime != null">
+        payTime,
+      </if>
+      <if test="workdays != null">
+        workDays,
+      </if>
+      <if test="attendancedays != null">
+        attendanceDays,
+      </if>
+      <if test="absencedays != null">
+        absenceDays,
+      </if>
+      <if test="unemployeddays != null">
+        unemployedDays,
+      </if>
+      <if test="spareholiday != null">
+        spareHoliday,
+      </if>
+      <if test="usedholiday != null">
+        usedHoliday,
+      </if>
+      <if test="normalovertime != null">
+        normalOvertime,
+      </if>
+      <if test="specialovertime != null">
+        specialOvertime,
+      </if>
+      <if test="basicpay != null">
+        basicPay,
+      </if>
+      <if test="trafficexpense != null">
+        trafficExpense,
+      </if>
+      <if test="totalsalary != null">
+        totalSalary,
+      </if>
+      <if test="healthinsurance != null">
+        healthInsurance,
+      </if>
+      <if test="careinsurance != null">
+        careInsurance,
+      </if>
+      <if test="welfarepension != null">
+        welfarePension,
+      </if>
+      <if test="pensionfund != null">
+        pensionFund,
+      </if>
+      <if test="adjustsocial != null">
+        adjustSocial,
+      </if>
+      <if test="employinsurance != null">
+        employInsurance,
+      </if>
+      <if test="legaldeduction != null">
+        legalDeduction,
+      </if>
+      <if test="incometax != null">
+        incomeTax,
+      </if>
+      <if test="inlandtax != null">
+        inlandTax,
+      </if>
+      <if test="dependnumber != null">
+        dependNumber,
+      </if>
+      <if test="totaldeduction != null">
+        totalDeduction,
+      </if>
+      <if test="adjustsalary != null">
+        adjustSalary,
+      </if>
+      <if test="grandtotaldeduction != null">
+        grandTotalDeduction,
+      </if>
+      <if test="totaltaxation != null">
+        totalTaxation,
+      </if>
+      <if test="totaltaxexempt != null">
+        totalTaxExempt,
+      </if>
+      <if test="monthtrafficexpense != null">
+        monthTrafficExpense,
+      </if>
+      <if test="substractionsupply != null">
+        substractionSupply,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="detailid != null">
+        #{detailid,jdbcType=INTEGER},
+      </if>
+      <if test="employeeid != null">
+        #{employeeid,jdbcType=INTEGER},
+      </if>
+      <if test="worktime != null">
+        #{worktime,jdbcType=DATE},
+      </if>
+      <if test="paytime != null">
+        #{paytime,jdbcType=DATE},
+      </if>
+      <if test="workdays != null">
+        #{workdays,jdbcType=REAL},
+      </if>
+      <if test="attendancedays != null">
+        #{attendancedays,jdbcType=REAL},
+      </if>
+      <if test="absencedays != null">
+        #{absencedays,jdbcType=REAL},
+      </if>
+      <if test="unemployeddays != null">
+        #{unemployeddays,jdbcType=REAL},
+      </if>
+      <if test="spareholiday != null">
+        #{spareholiday,jdbcType=REAL},
+      </if>
+      <if test="usedholiday != null">
+        #{usedholiday,jdbcType=REAL},
+      </if>
+      <if test="normalovertime != null">
+        #{normalovertime,jdbcType=REAL},
+      </if>
+      <if test="specialovertime != null">
+        #{specialovertime,jdbcType=REAL},
+      </if>
+      <if test="basicpay != null">
+        #{basicpay,jdbcType=INTEGER},
+      </if>
+      <if test="trafficexpense != null">
+        #{trafficexpense,jdbcType=INTEGER},
+      </if>
+      <if test="totalsalary != null">
+        #{totalsalary,jdbcType=INTEGER},
+      </if>
+      <if test="healthinsurance != null">
+        #{healthinsurance,jdbcType=INTEGER},
+      </if>
+      <if test="careinsurance != null">
+        #{careinsurance,jdbcType=INTEGER},
+      </if>
+      <if test="welfarepension != null">
+        #{welfarepension,jdbcType=INTEGER},
+      </if>
+      <if test="pensionfund != null">
+        #{pensionfund,jdbcType=INTEGER},
+      </if>
+      <if test="adjustsocial != null">
+        #{adjustsocial,jdbcType=INTEGER},
+      </if>
+      <if test="employinsurance != null">
+        #{employinsurance,jdbcType=INTEGER},
+      </if>
+      <if test="legaldeduction != null">
+        #{legaldeduction,jdbcType=INTEGER},
+      </if>
+      <if test="incometax != null">
+        #{incometax,jdbcType=INTEGER},
+      </if>
+      <if test="inlandtax != null">
+        #{inlandtax,jdbcType=INTEGER},
+      </if>
+      <if test="dependnumber != null">
+        #{dependnumber,jdbcType=INTEGER},
+      </if>
+      <if test="totaldeduction != null">
+        #{totaldeduction,jdbcType=INTEGER},
+      </if>
+      <if test="adjustsalary != null">
+        #{adjustsalary,jdbcType=INTEGER},
+      </if>
+      <if test="grandtotaldeduction != null">
+        #{grandtotaldeduction,jdbcType=INTEGER},
+      </if>
+      <if test="totaltaxation != null">
+        #{totaltaxation,jdbcType=INTEGER},
+      </if>
+      <if test="totaltaxexempt != null">
+        #{totaltaxexempt,jdbcType=INTEGER},
+      </if>
+      <if test="monthtrafficexpense != null">
+        #{monthtrafficexpense,jdbcType=INTEGER},
+      </if>
+      <if test="substractionsupply != null">
+        #{substractionsupply,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.tkzSalary.pojo.Detail">
+    update detail_tbl
+    <set>
+      <if test="employeeid != null">
+        employeeID = #{employeeid,jdbcType=INTEGER},
+      </if>
+      <if test="worktime != null">
+        workTime = #{worktime,jdbcType=DATE},
+      </if>
+      <if test="paytime != null">
+        payTime = #{paytime,jdbcType=DATE},
+      </if>
+      <if test="workdays != null">
+        workDays = #{workdays,jdbcType=REAL},
+      </if>
+      <if test="attendancedays != null">
+        attendanceDays = #{attendancedays,jdbcType=REAL},
+      </if>
+      <if test="absencedays != null">
+        absenceDays = #{absencedays,jdbcType=REAL},
+      </if>
+      <if test="unemployeddays != null">
+        unemployedDays = #{unemployeddays,jdbcType=REAL},
+      </if>
+      <if test="spareholiday != null">
+        spareHoliday = #{spareholiday,jdbcType=REAL},
+      </if>
+      <if test="usedholiday != null">
+        usedHoliday = #{usedholiday,jdbcType=REAL},
+      </if>
+      <if test="normalovertime != null">
+        normalOvertime = #{normalovertime,jdbcType=REAL},
+      </if>
+      <if test="specialovertime != null">
+        specialOvertime = #{specialovertime,jdbcType=REAL},
+      </if>
+      <if test="basicpay != null">
+        basicPay = #{basicpay,jdbcType=INTEGER},
+      </if>
+      <if test="trafficexpense != null">
+        trafficExpense = #{trafficexpense,jdbcType=INTEGER},
+      </if>
+      <if test="totalsalary != null">
+        totalSalary = #{totalsalary,jdbcType=INTEGER},
+      </if>
+      <if test="healthinsurance != null">
+        healthInsurance = #{healthinsurance,jdbcType=INTEGER},
+      </if>
+      <if test="careinsurance != null">
+        careInsurance = #{careinsurance,jdbcType=INTEGER},
+      </if>
+      <if test="welfarepension != null">
+        welfarePension = #{welfarepension,jdbcType=INTEGER},
+      </if>
+      <if test="pensionfund != null">
+        pensionFund = #{pensionfund,jdbcType=INTEGER},
+      </if>
+      <if test="adjustsocial != null">
+        adjustSocial = #{adjustsocial,jdbcType=INTEGER},
+      </if>
+      <if test="employinsurance != null">
+        employInsurance = #{employinsurance,jdbcType=INTEGER},
+      </if>
+      <if test="legaldeduction != null">
+        legalDeduction = #{legaldeduction,jdbcType=INTEGER},
+      </if>
+      <if test="incometax != null">
+        incomeTax = #{incometax,jdbcType=INTEGER},
+      </if>
+      <if test="inlandtax != null">
+        inlandTax = #{inlandtax,jdbcType=INTEGER},
+      </if>
+      <if test="dependnumber != null">
+        dependNumber = #{dependnumber,jdbcType=INTEGER},
+      </if>
+      <if test="totaldeduction != null">
+        totalDeduction = #{totaldeduction,jdbcType=INTEGER},
+      </if>
+      <if test="adjustsalary != null">
+        adjustSalary = #{adjustsalary,jdbcType=INTEGER},
+      </if>
+      <if test="grandtotaldeduction != null">
+        grandTotalDeduction = #{grandtotaldeduction,jdbcType=INTEGER},
+      </if>
+      <if test="totaltaxation != null">
+        totalTaxation = #{totaltaxation,jdbcType=INTEGER},
+      </if>
+      <if test="totaltaxexempt != null">
+        totalTaxExempt = #{totaltaxexempt,jdbcType=INTEGER},
+      </if>
+      <if test="monthtrafficexpense != null">
+        monthTrafficExpense = #{monthtrafficexpense,jdbcType=INTEGER},
+      </if>
+      <if test="substractionsupply != null">
+        substractionSupply = #{substractionsupply,jdbcType=INTEGER},
+      </if>
+    </set>
+    where detailID = #{detailid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.tkzSalary.pojo.Detail">
+    update detail_tbl
+    set employeeID = #{employeeid,jdbcType=INTEGER},
+      workTime = #{worktime,jdbcType=DATE},
+      payTime = #{paytime,jdbcType=DATE},
+      workDays = #{workdays,jdbcType=REAL},
+      attendanceDays = #{attendancedays,jdbcType=REAL},
+      absenceDays = #{absencedays,jdbcType=REAL},
+      unemployedDays = #{unemployeddays,jdbcType=REAL},
+      spareHoliday = #{spareholiday,jdbcType=REAL},
+      usedHoliday = #{usedholiday,jdbcType=REAL},
+      normalOvertime = #{normalovertime,jdbcType=REAL},
+      specialOvertime = #{specialovertime,jdbcType=REAL},
+      basicPay = #{basicpay,jdbcType=INTEGER},
+      trafficExpense = #{trafficexpense,jdbcType=INTEGER},
+      totalSalary = #{totalsalary,jdbcType=INTEGER},
+      healthInsurance = #{healthinsurance,jdbcType=INTEGER},
+      careInsurance = #{careinsurance,jdbcType=INTEGER},
+      welfarePension = #{welfarepension,jdbcType=INTEGER},
+      pensionFund = #{pensionfund,jdbcType=INTEGER},
+      adjustSocial = #{adjustsocial,jdbcType=INTEGER},
+      employInsurance = #{employinsurance,jdbcType=INTEGER},
+      legalDeduction = #{legaldeduction,jdbcType=INTEGER},
+      incomeTax = #{incometax,jdbcType=INTEGER},
+      inlandTax = #{inlandtax,jdbcType=INTEGER},
+      dependNumber = #{dependnumber,jdbcType=INTEGER},
+      totalDeduction = #{totaldeduction,jdbcType=INTEGER},
+      adjustSalary = #{adjustsalary,jdbcType=INTEGER},
+      grandTotalDeduction = #{grandtotaldeduction,jdbcType=INTEGER},
+      totalTaxation = #{totaltaxation,jdbcType=INTEGER},
+      totalTaxExempt = #{totaltaxexempt,jdbcType=INTEGER},
+      monthTrafficExpense = #{monthtrafficexpense,jdbcType=INTEGER},
+      substractionSupply = #{substractionsupply,jdbcType=INTEGER}
+    where detailID = #{detailid,jdbcType=INTEGER}
+  </update>
+</mapper>
