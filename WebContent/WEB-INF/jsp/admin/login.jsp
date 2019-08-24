@@ -28,7 +28,7 @@
         <div class="container">
             <div class="row">
                 <form id = "loginform" method="post" action="" class="bootstrap-admin-login-form">
-                    <h1>登录</h1>
+                    <h1>ログイン</h1>
                     <div class="form-group">
                         <input class="form-control" type="text" name="adminaccount" placeholder="アカウント" value = "">
                     </div>

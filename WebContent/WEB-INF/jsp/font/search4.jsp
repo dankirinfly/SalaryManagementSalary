@@ -40,7 +40,7 @@
                     
                     <div class="row">                      
                          <font size="5" style="left: 10px; position: absolute; top: 15px;">${fn:substring(detail.paytime, 0, 4)}年${fn:substring(detail.paytime, 5, 7)}月${fn:substring(detail.paytime, 8, 10)}日支給分&emsp;&emsp;給予詳細</font><br />
-                         <font size="3" style="left: 10px; position: absolute; top: 50px;">對象期間：${fn:substring(detail.worktime, 0, 4)}月1日 ~${fn:substring(detail.worktime, 0, 4)}月30日</font><br />
+                         <font size="3" style="left: 10px; position: absolute; top: 50px;">對象期間：${fn:substring(detail.worktime, 5, 7)}月1日 ~${fn:substring(detail.worktime, 5, 7)}月30日</font><br />
                          <font size="5" style="left: 10px; position: absolute; top: 90px;">差引支給額：${detail.substractionsupply }</font><br />    
                     </div>
                     
