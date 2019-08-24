@@ -110,7 +110,7 @@
                                         	<input type="hidden" name="adminid"  value = "${ employee.adminid}" />
                                             <td><input class="col-lg-12" type="text" name="employeeaccount"  readonly="readonly" value = "${ employee.employeeaccount}"></td>
                                             <td><input class="col-lg-12" type="text" name="employeepassword"  value = "${ employee.employeepassword}"></td>
-                                            <td><input class="col-lg-12" type="text" name="employeename"  value = "${ employee.employeename}"></td>
+                                            <td><input class="col-lg-12" type="text" name="employeename"  readonly="readonly" value = "${ employee.employeename}"></td>
                                             <td><input class="col-lg-12" type="text" name="employeecontact"  value = "${ employee.employeecontact}"></td>
                                             <td><input class="col-lg-12" type="date" name="employeebirth"  value = "${fn:substring(employee.employeebirth, 0, 10)}"/></td>
                                         </tr>

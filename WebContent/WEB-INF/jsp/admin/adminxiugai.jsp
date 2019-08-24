@@ -33,18 +33,18 @@
         <div class="container">
             <div class="row">
                 <form id = "loginform" method="post" action="" class="bootstrap-admin-login-form">
-                    <h1>密码修改</h1>
+                    <h1>パスワード変更</h1>
                     <div class="form-group">
-                        <input class="form-control" type="text" name="adminaccount" placeholder="账号">
+                        <input class="form-control" type="text" name="adminaccount" placeholder="アカウント">
                     </div>
                     <div class="form-group">
-                        <input  class="form-control" type="password" name="adminpassword" placeholder="旧密码">
+                        <input  class="form-control" type="password" name="adminpassword" placeholder="旧パスワード">
                     </div>
                     <div class="form-group">
-                        <input id = "pw1" class="form-control" type="password" name="xinpassword" placeholder="新密码">
+                        <input id = "pw1" class="form-control" type="password" name="xinpassword" placeholder="新パスワード">
                     </div>
                     <div class="form-group">
-                        <input id = "pw2" class="form-control"  placeholder="再次输入">
+                        <input id = "pw2" class="form-control"  placeholder="再度入力">
                     </div>
                     <button type="button" class="btn btn-lg btn-primary" onclick="tijiao(${traffic.trafficid })">確定</button>
                     <button type="button" class="btn btn-lg btn-primary" onclick="xiugai(${traffic.trafficid })">キャンセル</button>

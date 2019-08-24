@@ -30,10 +30,10 @@
                 <form id = "loginform" method="post" action="" class="bootstrap-admin-login-form">
                     <h1>登录</h1>
                     <div class="form-group">
-                        <input class="form-control" type="text" name="adminaccount" placeholder="账号" value = "">
+                        <input class="form-control" type="text" name="adminaccount" placeholder="アカウント" value = "">
                     </div>
                     <div class="form-group">
-                        <input class="form-control" type="password" name="adminpassword" placeholder="密码" value = "">
+                        <input class="form-control" type="password" name="adminpassword" placeholder="パスワード" value = "">
                     </div>
                     <button type="button" class="btn btn-lg btn-primary" onclick="tijiao()">ログイン</button>
                     <button type="button" class="btn btn-lg btn-primary" onclick="xiugai()">パスワード変更</button>

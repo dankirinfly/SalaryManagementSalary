@@ -112,9 +112,7 @@
                             		<label >公告の内容</label>
                             		</div>
                             		<div  >
-                            		<textarea cols="1000" rows="15" class="col-lg-12" name="gonggaoneirong" >
-　										
-									</textarea>
+                            		<textarea cols="1000" rows="15" class="col-lg-12" name="gonggaoneirong" ></textarea>
 	                           	</div>                                          
                             	<div>
                             	<button type="button" class="btn btn-lg btn-primary" onclick="form.submit()">确认</button>
