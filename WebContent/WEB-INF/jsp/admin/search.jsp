@@ -102,6 +102,7 @@
                                     <thead>
                                         <tr>
                                             <th>社員氏名</th>
+                                            <th>支給時間</th> 
                                             <th>総支给額</th>
                                             <th>控除総計</th>
                                             <th>差引支給額</th>
@@ -119,6 +120,7 @@
                                             </c:if>
                                             </c:forEach>
                                             </td>
+                                            <td>${detail.paytime }</td>
                                             <td>${detail.totalsalary }</td>
                                             <td>${detail.grandtotaldeduction }</td>
                                             <td>${detail.substractionsupply }</td>
