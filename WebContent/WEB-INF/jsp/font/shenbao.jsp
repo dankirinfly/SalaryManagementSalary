@@ -102,10 +102,10 @@
                                      			<option value="2" >非定期料金</option>
 											</select> 
 											</td>
-                                            <td>始発駅<input type="text" name="trafficsection1" ><br/>目的地<input type="text" name="trafficsection2" ></td>
+                                            <td>始発駅<input class="col-lg-12" type="text" name="trafficsection1" ><br/>目的地<input class="col-lg-12" type="text" name="trafficsection2" ></td>
                                             <td><input id = "traffictime" class="col-lg-12" type="date" name="traffictime" /></td>
-                                            <td><input type="text" name="trafficexpense" ></td>
-											<input  type="hidden" name="verifystatus"  value = "1">
+                                            <td><input class="col-lg-12"type="text" name="trafficexpense" ></td>
+											<input class="col-lg-12" type="hidden" name="verifystatus"  value = "1">
                                         </tr>
                                        
                                     </tbody>
