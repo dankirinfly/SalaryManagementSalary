@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>admin</title>
+        <title>tkzSalary</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!-- Bootstrap -->
@@ -131,18 +131,23 @@
         <script language="JavaScript"> 
         
 			var today=new Date();
-			if(today.getMonth()<10){
-				if(today.getDate()<10){
-					document.getElementById("gonggao").value=today.getFullYear()+"-"+"0"+today.getMonth()+"-"+"0"+today.getDate();
+			var month = today.getMonth()+1;
+			var year = today.getFullYear();
+			var date = today.getDate();
+			if(month<10){
+				if(date<10){
+					document.getElementById("gonggao").value=year+"-"+"0"+month+"-"+"0"+date;
+				}else{
+					document.getElementById("gonggao").value=year+"-"+"0"+month+"-"+date;
 				}
-				document.getElementById("gonggao").value=today.getFullYear()+"-"+"0"+today.getMonth()+"-"+today.getDate();
+						
 			}else{
-				if(today.getDate()<10){
-					document.getElementById("gonggao").value=today.getFullYear()+"-"+today.getMonth()+"-"+"0"+today.getDate();
+				if(date<10){
+					document.getElementById("gonggao").value=year+"-"+month+"-"+"0"+date;
+				}else{
+					document.getElementById("gonggao").value=year+"-"+month+"-"+date;
 				}
-				document.getElementById("gonggao").value=today.getFullYear()+"-"+today.getMonth()+"-"+today.getDate();
 			}
-			
        
 		</script>
     </body>

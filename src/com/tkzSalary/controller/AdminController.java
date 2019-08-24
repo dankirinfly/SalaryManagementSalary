@@ -82,6 +82,22 @@ public class AdminController {
 		modelAndView.setViewName("admin/login");
 		return modelAndView;
 	}
+	
+	@RequestMapping(value="/admin/gongaosearch")
+	public ModelAndView gongaosearch(int gonggaoid) {
+		
+		ModelAndView modelAndView = new ModelAndView();
+		
+		List<GongGao> gongGaoList = gongGaoService.findGongGaoList();
+		modelAndView.addObject("gongGaoList", gongGaoList);
+		for (GongGao gongao : gongGaoList) {
+			if(gongao.getGonggaoid().equals(gonggaoid)) {
+				modelAndView.addObject("gonggao", gongao);
+			}
+		}
+		modelAndView.setViewName("admin/gonggaosearch");
+		return modelAndView;
+	}
 	@RequestMapping("/admin/admin")
 	public ModelAndView admin() {
 		ModelAndView modelAndView = new ModelAndView();

@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>admin</title>
+        <title>tkzSalary</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!-- Bootstrap -->
@@ -91,7 +91,7 @@
                        <c:forEach items="${gongGaoList }" var="gongGao" varStatus="s">
                                         
                         	<li>
-      							<a href="#" >
+      							<a href="${pageContext.request.contextPath }/admin/gongaosearch.action?gonggaoid=${ gongGao.gonggaoid  }" >
         							<span class="date">${fn:substring(gongGao.gonggaodate, 0, 10)}</span>
         							<span class="title left-buffer-10">${ gongGao.gonggaotitle  }</span>
       							</a>

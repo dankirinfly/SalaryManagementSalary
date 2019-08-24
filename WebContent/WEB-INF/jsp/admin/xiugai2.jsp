@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>admin</title>
+        <title>tkzSalary</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!-- Bootstrap -->
@@ -64,8 +64,8 @@
                             		<label >公告の内容</label>
                             		</div>
                             		<div  >
-                            		<textarea cols="1000" rows="15" class="col-lg-12" name="gonggaoneirong"value="${ gongGao.gonggaoneirong}" >
-　										
+                            		<textarea cols="1000" rows="15" class="col-lg-12" name="gonggaoneirong" >
+　										${ gongGao.gonggaoneirong}
 									</textarea>
 	                           	</div>                                          
                             	<div>

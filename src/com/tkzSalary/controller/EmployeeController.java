@@ -52,12 +52,28 @@ public class EmployeeController {
 		modelAndView.setViewName("font/login");
 		return modelAndView;
 	}
+	@RequestMapping(value="/font/gongaosearch")
+	public ModelAndView gongaosearch(int gonggaoid) {
+		
+		
+		ModelAndView modelAndView = new ModelAndView();
+		
+		List<GongGao> gongGaoList = gongGaoService.findGongGaoList();
+		modelAndView.addObject("gongGaoList", gongGaoList);
+		for (GongGao gongao : gongGaoList) {
+			if(gongao.getGonggaoid().equals(gonggaoid)) {
+				modelAndView.addObject("gonggao", gongao);
+			}
+		}
+		modelAndView.setViewName("font/gonggaosearch");
+		return modelAndView;
+	}
 	@RequestMapping("/font/font")
-	public String font() {
+	public ModelAndView font() {
 		ModelAndView modelAndView = new ModelAndView();
 		List<GongGao> gongGaoList = gongGaoService.findGongGaoList();
 		modelAndView.addObject("gongGaoList", gongGaoList);
-		return "font/font";
+		return modelAndView;
 		
 	}
 	@RequestMapping("/font/shenbao")

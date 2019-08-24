@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>admin</title>
+        <title>tkzSalary</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!-- Bootstrap -->
@@ -95,7 +95,6 @@
                     
                     <div class="row">
                         <div class="panel panel-default">
-                            >
                             <div class="bootstrap-admin-panel-content">
                                 <table class="table table-striped table-bordered" id="example">
                                     <thead>

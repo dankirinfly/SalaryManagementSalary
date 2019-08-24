@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>admin</title>
+        <title>tkzSalary</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!-- Bootstrap -->
@@ -234,12 +234,18 @@
         <script language="JavaScript"> 
         
 			var today=new Date();
-			if(today.getMonth()<10){
-				document.getElementById("worktime").value=today.getFullYear()+"-"+"0"+today.getMonth()+"-"+"01";
-				document.getElementById("paytime").value=today.getFullYear()+"-"+"0"+today.getMonth()+"-"+"25";			
+			var month = today.getMonth();
+			var month1 = today.getMonth()+1;
+			if(month<10){
+				document.getElementById("worktime").value=today.getFullYear()+"-"+"0"+month+"-"+"01";
 			}else{
-				document.getElementById("worktime").value=today.getFullYear()+"-"+today.getMonth()+"-"+"01";
-				document.getElementById("paytime").value=today.getFullYear()+"-"+today.getMonth()+"-"+"25";
+				document.getElementById("worktime").value=today.getFullYear()+"-"+month+"-"+"01";
+				
+			}
+			if(month1<10){
+				document.getElementById("paytime").value=today.getFullYear()+"-"+"0"+month1+"-"+"25";			
+			}else{
+				document.getElementById("paytime").value=today.getFullYear()+"-"+month1+"-"+"25";
 			}
 			
        

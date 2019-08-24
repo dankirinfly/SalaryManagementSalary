@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt"  prefix="fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -12,25 +13,23 @@
         <link href="${pageContext.request.contextPath }/css/bootstrap-theme.min.css" rel="stylesheet" media="screen">
         <link href="${pageContext.request.contextPath }/css/bootstrap-admin-theme.css" rel="stylesheet" media="screen">
         <link href="${pageContext.request.contextPath }/css/stytle.css" rel="stylesheet" media="screen" />
-       
+        <script type="text/javascript" src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
     </head>
     <body class="bootstrap-admin-with-small-navbar">
 		<nav class="navbar navbar-default navbar-inverse navbar-fixed-top " role="navigation">
 			<h1 align="center" style="color:FloralWhite;">タレントキリンズ株式会社</h1>
 		</nav>
-
-        <div class="container">
+  		<div class="container">
             <!-- left, vertical navbar & content -->
             <div class="row">
                 <!-- left, vertical navbar -->
-                
-                <div class="col-md-3"> 
+                                <div class="col-md-3"> 
                    <div class="panel panel-default"> 
                     <div class="panel-heading"> 
                       ホームページ
                     </div> 
                     <div class="list-group">
-                    <a class="list-group-item  " href="${pageContext.request.contextPath }/font/font.action"><i class="fa fa-fw fa-gear"></i> ホームページ </a> 
+                    <a class="list-group-item  active" href="${pageContext.request.contextPath }/font/font.action"><i class="fa fa-fw fa-gear"></i> ホームページ </a> 
                     </div> 
                    </div> 
                    <div class="panel panel-default"> 
@@ -56,7 +55,7 @@
                       経費申込 
                     </div> 
                     <div class="list-group"> 
-                     <a class="list-group-item active" href="${pageContext.request.contextPath }/font/shenbao.action"><i class="fa fa-fw fa-gear"></i> 経費申込 </a>
+                     <a class="list-group-item" href="${pageContext.request.contextPath }/font/shenbao.action"><i class="fa fa-fw fa-gear"></i> 経費申込 </a>
                     </div> 
                    </div> 
                    
@@ -70,82 +69,47 @@
                    </div> 
                 </div> 
 
-                <!-- content -->
-                <div class="col-md-9">
+                 <div class="col-md-9">
 					
                     
-                    
-                    
                     <div class="row">
-                     <form method="post" action="${pageContext.request.contextPath }/font/shenhe.action" class="form-horizontal">
+                    <form method="post" action="${pageContext.request.contextPath }/font/font.action" class="form-horizontal">
                         <div class="panel panel-default">
                             
+                            
                             <div class="bootstrap-admin-panel-content">
-                                <table class="table table-striped table-bordered" id="example">
-                                    <thead>
-                                        <tr>
-                                            <th>社員氏名</th>
-                                            <th>料金タイプ</th>
-                                            <th>交通区間</th>
-                                            <th>発生日時</th>
-                                            <th>交通費</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                    	
-                                        <tr class="gradeA">
-                                       	 	<input type="hidden" name="employeeid"  value = "${ employee.employeeid}" />
-                                            <td><input  type="text" name="employeename" readonly="readonly" value = "${ employee.employeename}"></td>
-                                            <td>
-                                            <select name="trafficexpensetype" >
-                                     			<option value="1" selected = "selected">定期通勤料</option>
-                                     			<option value="2" >非定期料金</option>
-											</select> 
-											</td>
-                                            <td>始発駅<input type="text" name="trafficsection1" ><br/>目的地<input type="text" name="trafficsection2" ></td>
-                                            <td><input id = "traffictime" class="col-lg-12" type="date" name="traffictime" /></td>
-                                            <td><input type="text" name="trafficexpense" ></td>
-											<input  type="hidden" name="verifystatus"  value = "1">
-                                        </tr>
-                                       
-                                    </tbody>
-                                    
-                                </table>
+                            	<div  >
+                            		<label >公告時間</label>
+                            		</div>
+                            		<div  >
+                            		<input id = "gonggao"  type="date" readonly="readonly" value="${fn:substring(gonggao.gonggaodate, 0, 10)}" />
+                            	</div>
+                            	<div  >
+                            		<label >公告の概要</label>
+                            		</div>
+                            		<div  >
+                            		<input type="text" class="col-lg-12" readonly="readonly" value="${ gonggao.gonggaotitle  }" >
+                            	</div>
+                            	<div >
+                            		<label >公告の内容</label>
+                            		</div>
+                            		<div  >
+                            		<textarea cols="1000" rows="15" readonly="readonly" class="col-lg-12"  >
+　										${ gonggao.gonggaoneirong  }
+									</textarea>
+	                           	</div>                                          
+                            	<div>
+                            	<button type="button" class="btn btn-lg btn-primary" onclick="form.submit()">戻る</button>
+                            	 </div>                   
                             </div>
-							<div >
-                            	<button type="button" class="btn btn-lg btn-primary" onclick="formSubmit()">确认</button>
-                            </div> 
                         </div>
-                     </form>
+                        
+                    </form>
                     </div>
                     
 				</div>
            </div>    
         </div>
-        <script language="JavaScript"> 
-        
-			var today=new Date();
-			var month = today.getMonth()+1;
-			var year = today.getFullYear();
-			var date = today.getDate();
-			if(month<10){
-				if(date<10){
-					document.getElementById("traffictime").value=year+"-"+"0"+month+"-"+"0"+date;
-				}else{
-					document.getElementById("traffictime").value=year+"-"+"0"+month+"-"+date;
-				}
-						
-			}else{
-				if(date<10){
-					document.getElementById("traffictime").value=year+"-"+month+"-"+"0"+date;
-				}else{
-					document.getElementById("traffictime").value=year+"-"+month+"-"+date;
-				}
-			}
-			function formSubmit(){
-        		document.forms[0].submit();
-   			}
        
-		</script>
     </body>
 </html>
