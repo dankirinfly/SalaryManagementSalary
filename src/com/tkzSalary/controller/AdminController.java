@@ -187,6 +187,41 @@ public class AdminController {
 		modelAndView.addObject("employeeList", employeeList);
 		List<Traffic> trafficList = trafficService.getTrafficListByStatus();
 		modelAndView.addObject("trafficListSize", trafficList.size());
+		List<Detail> details= detailService.getDetailList();
+		if (employeeList.size() > 0) {
+			Employee employee = employeeList.get(0);
+			for (Detail detail : details) {
+				if (detail.getEmployeeid().equals(employee.getEmployeeid())) {
+					modelAndView.addObject("detail", detail);
+					modelAndView.setViewName("/admin/forms");
+					return modelAndView;
+				}
+			}
+			
+		}
+		
+		modelAndView.setViewName("/admin/forms");
+		return modelAndView;
+	}
+	@RequestMapping("/admin/forms1")
+	public ModelAndView forms1(int employeeid) {
+		ModelAndView modelAndView = new ModelAndView();
+		List<Employee> employeeList = employeeService.getEmployeeList();
+		modelAndView.addObject("employeeList", employeeList);
+		List<Traffic> trafficList = trafficService.getTrafficListByStatus();
+		modelAndView.addObject("trafficListSize", trafficList.size());
+		List<Detail> details= detailService.getDetailList();
+	
+		for (Detail detail : details) {
+			if (detail.getEmployeeid().equals(employeeid)) {
+				modelAndView.addObject("detail", detail);
+				modelAndView.setViewName("/admin/forms");
+				return modelAndView;
+			}
+		}
+		Detail detail = new Detail();
+		detail.setEmployeeid(employeeid);
+		modelAndView.addObject("detail", detail);
 		modelAndView.setViewName("/admin/forms");
 		return modelAndView;
 	}

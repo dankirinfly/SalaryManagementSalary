@@ -1,5 +1,6 @@
 package com.tkzSalary.service.impl;
 
+import java.util.Collections;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +23,9 @@ public class GongGaoServiceImpl implements GongGaoService {
 	@Override
 	public List<GongGao> findGongGaoList() {
 		// TODO Auto-generated method stub
-		return gongGaoMapper.findGongGaoList();
+		List<GongGao> list= gongGaoMapper.findGongGaoList();
+		Collections.reverse(list);
+		return list;
 	}
 	@Override
 	public GongGao selectByPrimaryKey(Integer gonggaoid) {

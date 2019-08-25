@@ -1,5 +1,6 @@
 package com.tkzSalary.service.impl;
 
+import java.util.Collections;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,7 @@ public class DetailServiceImpl implements DetailService {
 	@Override
 	public List<Detail> getDetailList() {
 		List<Detail> list = detailMapper.findDetailList();
+		 Collections.reverse(list);
 		return list;
 	}
 	@Override

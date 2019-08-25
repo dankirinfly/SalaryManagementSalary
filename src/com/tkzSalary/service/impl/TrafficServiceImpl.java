@@ -1,6 +1,7 @@
 package com.tkzSalary.service.impl;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import org.hamcrest.SelfDescribing;
@@ -19,6 +20,7 @@ public class TrafficServiceImpl implements TrafficService {
 	public List<Traffic> getTrafficList() {
 		// TODO Auto-generated method stub
 		List<Traffic> list = trafficMapper.findTrafficList();
+		Collections.reverse(list);
 		return list;
 	}
 	@Override
@@ -46,6 +48,7 @@ public class TrafficServiceImpl implements TrafficService {
 				list1.add(traffic);
 			}
 		}
+		Collections.reverse(list1);
 		return list1;
 	}
 	@Override

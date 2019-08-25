@@ -1,5 +1,6 @@
 package com.tkzSalary.service.impl;
 
+import java.util.Collections;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 	public List<Employee> getEmployeeList() {
 		// TODO Auto-generated method stub
 		List<Employee> list = employeeMapper.findEmployeeList();
+		 Collections.reverse(list);
 		return list;
 	}
 	@Override
