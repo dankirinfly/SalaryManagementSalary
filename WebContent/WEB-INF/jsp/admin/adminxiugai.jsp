@@ -9,7 +9,7 @@
         <link href="${pageContext.request.contextPath }/css/bootstrap-theme.min.css" rel="stylesheet" media="screen">
         <link href="${pageContext.request.contextPath }/css/bootstrap-admin-theme.css" rel="stylesheet" media="screen">
         <link href="${pageContext.request.contextPath }/css/stytle.css" rel="stylesheet" media="screen" />
-        <script type="text/javascript" src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+        <script type="text/javascript" src="${pageContext.request.contextPath }/js/jquery-1.11.3.min.js"></script>
         <script type="text/javascript">
         	function tijiao(id){
         		 var path = "${pageContext.request.contextPath }/admin/adminxiugai.action";
