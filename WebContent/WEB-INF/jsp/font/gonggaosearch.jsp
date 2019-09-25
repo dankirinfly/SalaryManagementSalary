@@ -79,19 +79,19 @@
                             
                             <div class="bootstrap-admin-panel-content">
                             	<div  >
-                            		<label >公告時間</label>
+                            		<label >お知らせ時間</label>
                             		</div>
                             		<div  >
                             		<input id = "gonggao"  type="date" readonly="readonly" value="${fn:substring(gonggao.gonggaodate, 0, 10)}" />
                             	</div>
                             	<div  >
-                            		<label >公告の概要</label>
+                            		<label >お知らせの概要</label>
                             		</div>
                             		<div  >
                             		<input type="text" class="col-lg-12" readonly="readonly" value="${ gonggao.gonggaotitle  }" >
                             	</div>
                             	<div >
-                            		<label >公告の内容</label>
+                            		<label >お知らせの内容</label>
                             		</div>
                             		<div  >
                             		<textarea cols="1000" rows="15" readonly="readonly" class="col-lg-12"  >${ gonggao.gonggaoneirong  }</textarea>

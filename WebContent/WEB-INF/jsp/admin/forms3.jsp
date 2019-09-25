@@ -54,7 +54,7 @@
                     <div class="list-group"> 
                      <a class="list-group-item " href="${pageContext.request.contextPath }/admin/forms.action"><i class="fa fa-fw fa-gear"></i> 社員給与入力 </a>
                      <a class="list-group-item " href="${pageContext.request.contextPath }/admin/forms2.action"><i class="fa fa-fw fa-lock"></i> 社員情報入力 </a>
-                     <a class="list-group-item  active" href="${pageContext.request.contextPath }/admin/forms3.action"><i class="fa fa-fw fa-gear"></i> 公告入力 </a>
+                     <a class="list-group-item  active" href="${pageContext.request.contextPath }/admin/forms3.action"><i class="fa fa-fw fa-gear"></i> お知らせ入力 </a>
                     </div> 
                    </div> 
                    <div class="panel panel-default"> 
@@ -65,7 +65,7 @@
                      <a class="list-group-item" href="${pageContext.request.contextPath }/admin/guanli.action"><i class="fa fa-fw fa-gear"></i> 経費申込 </a>
                      <a class="list-group-item " href="${pageContext.request.contextPath }/admin/guanli2.action"><i class="fa fa-fw fa-lock"></i> 社員給与 </a>
                      <a class="list-group-item " href="${pageContext.request.contextPath }/admin/guanli3.action"><i class="fa fa-fw fa-sign-in"></i> 社員情報 </a>
-                     <a class="list-group-item " href="${pageContext.request.contextPath }/admin/guanli4.action"><i class="fa fa-fw fa-sign-in"></i> 公告 </a>
+                     <a class="list-group-item " href="${pageContext.request.contextPath }/admin/guanli4.action"><i class="fa fa-fw fa-sign-in"></i> お知らせ </a>
                     </div> 
                    </div> 
                    <div class="panel panel-default"> 
@@ -97,19 +97,19 @@
                             
                             <div class="bootstrap-admin-panel-content">
                             	<div  >
-                            		<label >公告時間</label>
+                            		<label >お知らせ時間</label>
                             		</div>
                             		<div  >
                             		<input id = "gonggao"  type="date" name="gonggaodate" />
                             	</div>
                             	<div  >
-                            		<label >公告の概要</label>
+                            		<label >お知らせの概要</label>
                             		</div>
                             		<div  >
                             		<input type="text" class="col-lg-12"name="gonggaotitle" >
                             	</div>
                             	<div >
-                            		<label >公告の内容</label>
+                            		<label >お知らせの内容</label>
                             		</div>
                             		<div  >
                             		<textarea cols="1000" rows="15" class="col-lg-12" name="gonggaoneirong" ></textarea>

@@ -49,7 +49,7 @@
                     
                     <div class="row">                      
                           <font size="5" style="left: 10px; position: absolute; top: 15px;">タレントキリンズ株式会社　給与管理システム</font> <br />
-                          <font size="3" style="left: 10px; position: absolute; top: 60px;">社員番号：${employee.employeeid}</font> <br />
+                          <font size="3" style="left: 10px; position: absolute; top: 60px;">社員番号：668315${employee.employeeid}</font> <br />
                           <font size="5" style="left: 10px; position: absolute; top: 90px;">${employee.employeename}</font><br />
                     </div>
                     

@@ -49,19 +49,19 @@
 					<input type="hidden" name="gonggaoid"  value = "${ gongGao.gonggaoid}" />
                    <div class="bootstrap-admin-panel-content">
                             	<div  >
-                            		<label >公告時間</label>
+                            		<label >お知らせ時間</label>
                             		</div>
                             		<div  >
                             		<input id = "gonggao"  type="date" name="gonggaodate" value="${fn:substring(gongGao.gonggaodate, 0, 10)}"/>
                             	</div>
                             	<div  >
-                            		<label >公告の概要</label>
+                            		<label >お知らせの概要</label>
                             		</div>
                             		<div  >
                             		<input type="text" class="col-lg-12"name="gonggaotitle" value="${ gongGao.gonggaotitle}">
                             	</div>
                             	<div >
-                            		<label >公告の内容</label>
+                            		<label >お知らせの内容</label>
                             		</div>
                             		<div  >
                             		<textarea cols="1000" rows="15" class="col-lg-12" name="gonggaoneirong" >${ gongGao.gonggaoneirong}</textarea>
