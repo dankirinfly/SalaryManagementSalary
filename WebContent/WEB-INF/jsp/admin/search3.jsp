@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt"  prefix="fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -106,16 +107,18 @@
                                             <th>パスワード</th>
                                             <th>名前</th>
                                             <th>連絡先</th>
+                                            <th>诞生日</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                     	<c:forEach items="${employeeList }" var="employee" varStatus="s">
                                         <tr class="gradeA">
-                                            <td>668315${employee.employeeid }</td>
+                                            <td>${668315+employee.employeeid }</td>
                                             <td>${employee.employeeaccount }</td>
                                             <td>${employee.employeepassword }</td>
                                             <td>${employee.employeename }</td>
                                             <td>${employee.employeecontact }</td>
+                                            <td><input  type="date" name="employeebirth"  value = "${fn:substring(employee.employeebirth, 0, 10)}"/></td>
                                         </tr>
                                        </c:forEach>
                                     </tbody>

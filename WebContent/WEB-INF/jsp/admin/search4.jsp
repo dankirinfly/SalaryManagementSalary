@@ -41,7 +41,7 @@
                     <div class="row">                      
                          <font size="5" style="left: 10px; position: absolute; top: 15px;">${fn:substring(detail.paytime, 0, 4)}年${fn:substring(detail.paytime, 5, 7)}月${fn:substring(detail.paytime, 8, 10)}日支給分&emsp;&emsp;給与詳細</font><br />
                          <font size="3" style="left: 10px; position: absolute; top: 50px;">対象期間：${fn:substring(detail.worktime, 5, 7)}月1日 ~${fn:substring(detail.worktime, 5, 7)}月30日</font><br />
-                         <font size="5" style="left: 10px; position: absolute; top: 90px;">差引支給額：${detail.substractionsupply }</font><br />    
+                         <font size="5" style="left: 10px; position: absolute; top: 90px;">差引支給額：${detail.substractionsupply }円</font><br />    
                     </div>
                     
 			</div>
@@ -49,7 +49,7 @@
                     
                     <div class="row">                      
                           <font size="5" style="left: 10px; position: absolute; top: 15px;">タレントキリンズ株式会社　給与管理システム</font> <br />
-                          <font size="3" style="left: 10px; position: absolute; top: 60px;">社員番号：668315${employee.employeeid}</font> <br />
+                          <font size="3" style="left: 10px; position: absolute; top: 60px;">社員番号：${668315+employee.employeeid}</font> <br />
                           <font size="5" style="left: 10px; position: absolute; top: 90px;">${employee.employeename}</font><br />
                     </div>
                     
