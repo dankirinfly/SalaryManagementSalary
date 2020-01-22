@@ -1,7 +1,11 @@
 package com.tkzSalary.controller;
 
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -39,13 +43,24 @@ public class EmployeeController {
 		return "font/login";
 	}
 	@RequestMapping(value="/font/login", method=RequestMethod.POST)
-	public ModelAndView login(Employee employee) {
+	public ModelAndView login(Employee employee) throws ParseException {
 		
 		Employee employee2 = employeeService.getEmployeeByNameAndPassword(employee);
+		//+90day
+		String time1 = employee2.getEmployeeregisteredtime();
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		Date date = format.parse(time1);
+		Calendar c = Calendar.getInstance();
+	    c.setTime(date);
+	    c.add(Calendar.DATE, 90);
+	    Date newDate = c.getTime();
+		String enddate = format.format(newDate);
+		employee.setEmployeejiushitime(enddate);
 		ModelAndView modelAndView = new ModelAndView();
 		if(employee2 != null) {
 			List<GongGao> gongGaoList = gongGaoService.findGongGaoList();
 			modelAndView.addObject("gongGaoList", gongGaoList);
+			modelAndView.addObject("enddate", enddate);
 			modelAndView.setViewName("font/font");
 			return modelAndView;
 		}

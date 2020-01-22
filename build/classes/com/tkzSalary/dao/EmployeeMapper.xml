@@ -9,10 +9,11 @@
     <result column="employeeName" jdbcType="VARCHAR" property="employeename" />
     <result column="employeeContact" jdbcType="VARCHAR" property="employeecontact" />
     <result column="employeeBirth" jdbcType="DATE" property="employeebirth" />
+    <result column="employeeRegisteredTime" jdbcType="DATE" property="employeeregisteredtime" />
   </resultMap>
   <sql id="Base_Column_List">
     employeeID, adminID, employeeAccount, employeePassword, employeeName, employeeContact, 
-    employeeBirth
+    employeeBirth,employeeRegisteredTime
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
@@ -41,10 +42,10 @@
   <insert id="insert" parameterType="com.tkzSalary.pojo.Employee">
     insert into employee_tbl (employeeID, adminID, employeeAccount, 
       employeePassword, employeeName, employeeContact, 
-      employeeBirth)
+      employeeBirth,employeeRegisteredTime)
     values (#{employeeid,jdbcType=INTEGER}, #{adminid,jdbcType=INTEGER}, #{employeeaccount,jdbcType=VARCHAR}, 
       #{employeepassword,jdbcType=VARCHAR}, #{employeename,jdbcType=VARCHAR}, #{employeecontact,jdbcType=VARCHAR}, 
-      #{employeebirth,jdbcType=DATE})
+      #{employeebirth,jdbcType=DATE},#{employeeregisteredtime,jdbcType=DATE})
   </insert>
   <insert id="insertSelective" parameterType="com.tkzSalary.pojo.Employee">
     insert into employee_tbl

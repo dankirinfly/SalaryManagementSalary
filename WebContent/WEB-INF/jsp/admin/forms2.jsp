@@ -105,6 +105,7 @@
                                             <th >名前</th>
                                             <th >連絡先</th>
                                             <th >诞生日</th>
+                                            <th>登録日</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -116,6 +117,7 @@
                                             <td ><input type="text"class="col-lg-12" name="employeename" ></td>
                                             <td ><input type="text"class="col-lg-12" name="employeecontact" ></td>
                                             <td ><input id = "employeebirth" class="col-lg-12" type="date" name="employeebirth" /></td>
+                                            <td ><input id = "employeeregisteredtime" class="col-lg-12" type="date" name="employeeregisteredtime" /></td>
                                         </tr>
                                     </tbody>
                             	</table>    
@@ -141,15 +143,19 @@
 			if(month<10){
 				if(date<10){
 					document.getElementById("employeebirth").value=year+"-"+"0"+month+"-"+"0"+date;
+					document.getElementById("employeeregisteredtime").value=year+"-"+"0"+month+"-"+"0"+date;
 				}else{
 					document.getElementById("employeebirth").value=year+"-"+"0"+month+"-"+date;
+					document.getElementById("employeeregisteredtime").value=year+"-"+"0"+month+"-"+date;
 				}
 						
 			}else{
 				if(date<10){
 					document.getElementById("employeebirth").value=year+"-"+month+"-"+"0"+date;
+					document.getElementById("employeeregisteredtime").value=year+"-"+month+"-"+"0"+date;
 				}else{
 					document.getElementById("employeebirth").value=year+"-"+month+"-"+date;
+					document.getElementById("employeeregisteredtime").value=year+"-"+month+"-"+date;
 				}
 			}
        

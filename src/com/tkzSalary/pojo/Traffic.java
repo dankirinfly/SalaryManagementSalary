@@ -2,20 +2,21 @@ package com.tkzSalary.pojo;
 
 
 public class Traffic {
+	//交通id
     private Integer trafficid;
-
+    //员工id
     private Integer employeeid;
-
+    //交通费用
     private Integer trafficexpense;
-
+    //交通费用类型
     private Integer trafficexpensetype;
-
+    //交通时间
     private String traffictime;
-
+    //交通路段
     private String trafficsection;
-
+    //验证状态
     private Integer verifystatus;
-
+    //失败的原因
     private String failedreason;
 
     public Integer getTrafficid() {

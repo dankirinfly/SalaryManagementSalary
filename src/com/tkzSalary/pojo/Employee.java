@@ -3,21 +3,42 @@ package com.tkzSalary.pojo;
 
 
 public class Employee {
+	//员工id
     private Integer employeeid;
-
+    //管理员id
     private Integer adminid;
-
+    //员工账户
     private String employeeaccount;
-
+    //员工密码
     private String employeepassword;
-
+    //员工姓名
     private String employeename;
-
+    //员工电话
     private String employeecontact;
-
+    //员工生日
     private String employeebirth;
+    //员工注册日期
+    private String employeeregisteredtime;
+    //员工90日期
+    private String employeejiushitime;
 
-    public Integer getEmployeeid() {
+    public String getEmployeejiushitime() {
+		return employeejiushitime;
+	}
+
+	public void setEmployeejiushitime(String employeejiushitime) {
+		this.employeejiushitime = employeejiushitime;
+	}
+
+	public String getEmployeeregisteredtime() {
+		return employeeregisteredtime;
+	}
+
+	public void setEmployeeregisteredtime(String employeeregisteredtime) {
+		this.employeeregisteredtime = employeeregisteredtime;
+	}
+
+	public Integer getEmployeeid() {
         return employeeid;
     }
 

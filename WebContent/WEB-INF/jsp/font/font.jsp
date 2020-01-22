@@ -15,7 +15,113 @@
         <link href="${pageContext.request.contextPath }/css/stytle.css" rel="stylesheet" media="screen" />
        
     </head>
-    <body class="bootstrap-admin-with-small-navbar">
+
+<style type="text/css">
+#winpop {
+	width: 200px;
+	height: 0px;
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	border: 1px solid #999999;
+	margin: 0;
+	padding: 1px;
+	overflow: hidden;
+	display: none;
+	background: #FFFFFF
+}
+
+#winpop .title {
+	width: 100%;
+	height: 20px;
+	line-height: 20px;
+	background: #FFCC00;
+	font-weight: bold;
+	text-align: center;
+	font-size: 12px;
+}
+
+#winpop .con {
+	width: 100%;
+	height: 80px;
+	line-height: 80px;
+	font-weight: bold;
+	font-size: 12px;
+	color: #FF0000;
+	text-decoration: underline;
+	text-align: center
+}
+
+.close {
+	position: absolute;
+	right: 4px;
+	top: -1px;
+	color: #FFFFFF;
+	cursor: pointer
+}
+
+</style>
+<script type="text/javascript">
+	function tips_pop() {
+		var MsgPop = document.getElementById("winpop");//获取窗口这个对象,即ID为winpop的对象 
+		var popH = parseInt(MsgPop.style.height);//用parseInt将对象的高度转化为数字,以方便下面比较 
+		if (popH == 0) {//如果窗口的高度是0 
+			MsgPop.style.display = "block";//那么将隐藏的窗口显示出来 
+			show = setInterval("changeH('up')", 2);//开始以每0.002秒调用函数changeH("up"),即每0.002秒向上移动一次 
+		} else {
+			hide = setInterval("changeH('down')", 2);//开始以每0.002秒调用函数changeH("down"),即每0.002秒向下移动一次 
+		}
+	}
+	function changeH(str) {
+		var MsgPop = document.getElementById("winpop");
+		var popH = parseInt(MsgPop.style.height);
+		if (str == "up") {//如果这个参数是UP 
+			if (popH <= 100) {//如果转化为数值的高度小于等于100 
+				MsgPop.style.height = (popH + 4).toString() + "px";//高度增加4个象素 
+			} else {
+				clearInterval(show);//否则就取消这个函数调用,意思就是如果高度超过100象度了,就不再增长了 
+			}
+		}
+		if (str == "down") {
+			if (popH >= 4) {//如果这个参数是down 
+				MsgPop.style.height = (popH - 4).toString() + "px";//那么窗口的高度减少4个象素 
+			} else {
+				clearInterval(hide);//否则就取消这个函数调用,意思就是如果高度小于4个象度的时候,就不再减了 
+				MsgPop.style.display = "none";//因为窗口有边框,所以还是可以看见1~2象素没缩进去,这时候就把DIV隐藏掉 
+			}
+		}
+	}
+	window.onload = function() {
+		var enddate =  document.getElementById("enddate").value;
+		var date=new Date();
+    	var year=date.getFullYear();
+    	var month=date.getMonth()+1;
+    	var day=date.getDate();
+    	 var hour=date.getHours();
+         var minute=date.getMinutes();
+         var second=date.getSeconds();
+         if (month<10) {
+        	 month='0'+month;
+          }
+         if (hour<10) {
+         	hour='0'+hour;
+         }
+         if (minute<10) {
+         	minute='0'+minute;
+         }
+         if (second<10) {
+         	second='0'+second;
+         }
+    	var nowtime=year+'-'+month+'-'+day+' '+hour+':'+minute+':'+second;
+		if(enddate<nowtime){
+			setTimeout("tips_pop()", 800);
+		}
+		document.getElementById('winpop').style.height = '0px';
+		
+	}
+</script>
+
+<body class="bootstrap-admin-with-small-navbar">
 		<nav class="navbar navbar-default navbar-inverse navbar-fixed-top " role="navigation">
 			<h1 align="center" style="color:FloralWhite;">タレントキリンズ株式会社</h1>
 		</nav>
@@ -68,9 +174,16 @@
                      <a class="list-group-item" href="${pageContext.request.contextPath }/font/tologin.action"><i class="fa fa-fw fa-gear"></i> ログアウト</a> 
                     </div> 
                    </div> 
-                </div> 
+                </div>
 
-                 <div class="col-md-9">
+			<div id="winpop">
+				<div class="title">
+					ご注意ください<span class="close" onclick="tips_pop()">x</span>
+				</div>
+				<div class="con">建议您尽快更改密码</div>
+			</div>
+			<input type="hidden" id="enddate" name="enddate" value="${enddate}">
+			<div class="col-md-9">
 					
                     <div class="row" >
                        <ul class="alert alert-info js-dashboard-info js-for-admin topInfoContainer animeStart">

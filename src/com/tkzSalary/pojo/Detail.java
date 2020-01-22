@@ -2,71 +2,78 @@ package com.tkzSalary.pojo;
 
 
 public class Detail {
+	//详情id
     private Integer detailid;
-
+    //员工id
     private Integer employeeid;
-
+    //勤務時間
     private String worktime;
-
+    //支給時間
     private String paytime;
-
+    //労働日數
     private Float workdays;
-
+    //出勤日数
     private Float attendancedays;
-
+    //欠勤
     private Float absencedays;
-
+    //不就労
     private Float unemployeddays;
-
+    //备用假期
     private Float spareholiday;
-
+    //使用假期
     private Float usedholiday;
-
+    //平日普通
     private Float normalovertime;
-
+    //休日普通
     private Float specialovertime;
-
+    //基本給
     private Integer basicpay;
-
+    //非定期料金
     private Integer trafficexpense;
-
+    //総支给額
     private Integer totalsalary;
-
+    //健康保險
     private Integer healthinsurance;
-
+    //介護保險
     private Integer careinsurance;
-
+    //厚生年金
     private Integer welfarepension;
-
+    //年金基金
     private Integer pensionfund;
-
+    //社保調整
     private Integer adjustsocial;
-
+    //雇佣保險
     private Integer employinsurance;
-
+    //法定控除計
     private Integer legaldeduction;
-
+    //所得税
     private Integer incometax;
-
+    //住民税
     private Integer inlandtax;
-
+    //扶養
     private Integer dependnumber;
-
+    //控除合計
     private Integer totaldeduction;
-
+    //调整
     private Integer adjustsalary;
-
+    //控除総計
     private Integer grandtotaldeduction;
-
+    //課税総額
     private Integer totaltaxation;
-
+    //非課税総額
     private Integer totaltaxexempt;
-
+    //定期通勤料
     private Integer monthtrafficexpense;
-
+    //差引支給額
     private Integer substractionsupply;
+    //年末調整額
+    private Integer yearendadjustment;
+    //特別奨励金
+    private Integer specialbounty;
+    //業績達成金
+    private Integer achievementmoney;
 
-    public Integer getDetailid() {
+	public Integer getDetailid() {
         return detailid;
     }
 
@@ -321,4 +328,29 @@ public class Detail {
     public void setSubstractionsupply(Integer substractionsupply) {
         this.substractionsupply = substractionsupply;
     }
+
+	public Integer getYearendadjustment() {
+		return yearendadjustment;
+	}
+
+	public void setYearendadjustment(Integer yearendadjustment) {
+		this.yearendadjustment = yearendadjustment;
+	}
+
+	public Integer getSpecialbounty() {
+		return specialbounty;
+	}
+
+	public void setSpecialbounty(Integer specialbounty) {
+		this.specialbounty = specialbounty;
+	}
+
+	public Integer getAchievementmoney() {
+		return achievementmoney;
+	}
+
+	public void setAchievementmoney(Integer achievementmoney) {
+		this.achievementmoney = achievementmoney;
+	}
+    
 }

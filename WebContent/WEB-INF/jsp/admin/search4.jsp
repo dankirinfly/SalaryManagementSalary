@@ -189,7 +189,16 @@
                                 </tr>  
                                 <tr class="">
                                 	 <th>差引支給額 &emsp;&nbsp;&nbsp;:&emsp;&emsp;${detail.substractionsupply }</th>                                           
-                                </tr>                                                                  
+                                </tr>        
+                                <tr class="">
+                                	 <th>年末調整額 &emsp;&nbsp;&nbsp;:&emsp;&emsp;${detail.yearendadjustment }</th>                                           
+                                </tr>
+                                <tr class="">
+                                	 <th>年末調整額 &emsp;&nbsp;&nbsp;:&emsp;&emsp;${detail.specialbounty }</th>                                        
+                                </tr>
+                                <tr class="">
+                                	 <th>業績達成金 &emsp;&nbsp;&nbsp;:&emsp;&emsp;${detail.achievementmoney }</th>                                           
+                                </tr>                                                          
                             </tbody>
                          </table>                
                     </div>

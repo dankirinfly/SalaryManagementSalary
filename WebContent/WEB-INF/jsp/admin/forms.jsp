@@ -13,7 +13,7 @@
         <link href="${pageContext.request.contextPath }/css/bootstrap-admin-theme.css" rel="stylesheet" media="screen">
         <link href="${pageContext.request.contextPath }/css/stytle.css" rel="stylesheet" media="screen" />
         <script type="text/javascript" src="${pageContext.request.contextPath }/js/jquery-1.11.3.min.js"></script>
-        <script type="text/javascript">
+        <script type="text/javascript" charset="UTF-8">
         	function formSubmit(){
         		document.forms[0].submit();
    			}
@@ -21,7 +21,53 @@
         		var employeeid = document.getElementById("employeeid");
                 var selectvalue = employeeid.options[employeeid.selectedIndex].value;
                 window.location.href="${pageContext.request.contextPath }/admin/forms1.action?employeeid="+selectvalue;
-   			}
+   			}	
+        	function upload(input){     
+        		let file = input.files[0];	//取到当前上传的文件
+        		fileType = file.name.split('.');	//取到文件名并使用“.”进行切割
+        		let reader = new FileReader();	//new一个FileReader对象实例
+ 		  		reader.readAsText(file, 'utf8');	//读取csv文件
+        		reader.onload = () => {	
+        			let fileData = reader.result	//获取读取的数据
+        			var allTextLines = fileData.split("\r\n");
+        		  	for(var i = 1;i<allTextLines.length-1;i++){
+        		  		var allTextLine = allTextLines[i].split(",");
+        		  		var empid = document.getElementById("employeeid").value;
+        				if(allTextLine[0] == empid){
+        					document.getElementById("workdays").value = allTextLine[1];
+        					document.getElementById("attendancedays").value = allTextLine[2];
+        					document.getElementById("absencedays").value = allTextLine[3];
+        					document.getElementById("unemployeddays").value = allTextLine[4];
+        					document.getElementById("normalovertime").value = allTextLine[5];
+        					document.getElementById("specialovertime").value = allTextLine[6];
+        					document.getElementById("basicpay").value = allTextLine[7];
+        					document.getElementById("trafficexpense").value = allTextLine[8];
+        					document.getElementById("monthtrafficexpense").value = allTextLine[9];
+        					document.getElementById("totalsalary").value = allTextLine[10];
+        					document.getElementById("healthinsurance").value = allTextLine[11];
+        					document.getElementById("careinsurance").value = allTextLine[12];
+        					document.getElementById("welfarepension").value = allTextLine[13];
+        					document.getElementById("pensionfund").value = allTextLine[14];
+        					document.getElementById("adjustsocial").value = allTextLine[15];
+        					document.getElementById("employinsurance").value = allTextLine[16];
+        					document.getElementById("legaldeduction").value = allTextLine[17];
+        					document.getElementById("incometax").value = allTextLine[18];
+        					document.getElementById("inlandtax").value = allTextLine[19];
+        					document.getElementById("dependnumber").value = allTextLine[20];
+        					document.getElementById("totaldeduction").value = allTextLine[21];
+        					document.getElementById("adjustsalary").value = allTextLine[22];
+        					document.getElementById("grandtotaldeduction").value = allTextLine[23];
+        					document.getElementById("totaltaxation").value = allTextLine[24];
+        					document.getElementById("totaltaxexempt").value = allTextLine[25];
+        					document.getElementById("substractionsupply").value = allTextLine[26];
+        					document.getElementById("yearendadjustment").value = allTextLine[27];
+        					document.getElementById("specialbounty").value = allTextLine[28];
+        					document.getElementById("achievementmoney").value = allTextLine[29];
+        					break;
+        				}
+        	        }
+        		}
+        	} 	
         </script>
     </head>
     <body class="bootstrap-admin-with-small-navbar">
@@ -96,7 +142,7 @@
 					
                     
                     <div class="row">
-                    <form method="post" action="${pageContext.request.contextPath }/admin/detailzhuce.action" class="form-horizontal">
+                    <form method="post" action="${pageContext.request.contextPath }/admin/detailzhuce.action" class="form-horizontal"  enctype ="multipart/form-data">
                         <div class="panel panel-default">
                             
                             
@@ -121,118 +167,129 @@
                             	</div>
                                 <div class="col-lg-6">
                             		<label class="col-lg-3">労働日數</label>
-                            		<input class="col-lg-5" type="text" name="workdays" value = "${ detail.workdays}">
+                            		<input id = "workdays" class="col-lg-5" type="text" name="workdays" value = "${ detail.workdays}">
                             	</div>       
                                 <div class="col-lg-6">
                             		<label class="col-lg-3">出勤日数</label>
-                            		<input class="col-lg-5" type="text" name="attendancedays" value = "${ detail.attendancedays}" >
+                            		<input id = "attendancedays" class="col-lg-5" type="text" name="attendancedays" value = "${ detail.attendancedays}" >
                             	</div>
                             	<div class="col-lg-6">
                             		<label class="col-lg-3">欠勤</label>
-                            		<input class="col-lg-5" type="text" name="absencedays" value = "${ detail.absencedays}">
+                            		<input id = "absencedays" class="col-lg-5" type="text" name="absencedays" value = "${ detail.absencedays}">
                             	</div> 
                             	<div class="col-lg-6">
                             		<label class="col-lg-3">不就労</label>
-                            		<input class="col-lg-5" type="text" name="unemployeddays" value = "${ detail.unemployeddays}">
+                            		<input id = "unemployeddays" class="col-lg-5" type="text" name="unemployeddays" value = "${ detail.unemployeddays}">
                             	</div>
                             	<div class="col-lg-6">
                             		<label class="col-lg-3">平日普通</label>
-                            		<input class="col-lg-5" type="text" name="normalovertime" value = "${ detail.normalovertime}">
+                            		<input id = "normalovertime" class="col-lg-5" type="text" name="normalovertime" value = "${ detail.normalovertime}">
                             	</div> 
                             	<div class="col-lg-6">
                             		<label class="col-lg-3">休日普通</label>
-                            		<input class="col-lg-5" type="text" name="specialovertime" value = "${ detail.specialovertime}">
+                            		<input id = "specialovertime" class="col-lg-5" type="text" name="specialovertime" value = "${ detail.specialovertime}">
                             	</div> 
                             	<div class="col-lg-6">
                             		<label class="col-lg-3">基本給</label>
-                            		<input class="col-lg-5" type="text" name="basicpay" value = "${ detail.basicpay}">
+                            		<input id = "basicpay" class="col-lg-5" type="text" name="basicpay" value = "${ detail.basicpay}">
                             	</div> 
                             	<div class="col-lg-6">
                             		<label class="col-lg-3">非定期料金</label>
-                            		<input class="col-lg-5" type="text" name="trafficexpense" value = "${ detail.trafficexpense}">
+                            		<input id = "trafficexpense" class="col-lg-5" type="text" name="trafficexpense" value = "${ detail.trafficexpense}">
                             	</div>
                             	<div class="col-lg-6">
                             		<label class="col-lg-3">定期通勤料</label>
-                            		<input class="col-lg-5" type="text" name="monthtrafficexpense" value = "${ detail.monthtrafficexpense}">
+                            		<input id = "monthtrafficexpense" class="col-lg-5" type="text" name="monthtrafficexpense" value = "${ detail.monthtrafficexpense}">
                             	</div> 
                             	<div class="col-lg-6">
                             		<label class="col-lg-3">総支给額</label>
-                            		<input class="col-lg-5" type="text" name="totalsalary" value = "${ detail.totalsalary}">
+                            		<input id = "totalsalary" class="col-lg-5" type="text" name="totalsalary" value = "${ detail.totalsalary}">
                             	</div> 
                             	<div class="col-lg-6">
                             		<label class="col-lg-3">健康保險</label>
-                            		<input class="col-lg-5" type="text" name="healthinsurance" value = "${ detail.healthinsurance}">
+                            		<input id = "healthinsurance" class="col-lg-5" type="text" name="healthinsurance" value = "${ detail.healthinsurance}">
                             	</div>  
                             	<div class="col-lg-6">
                             		<label class="col-lg-3">介護保險</label>
-                            		<input class="col-lg-5" type="text" name="careinsurance" value = "${ detail.careinsurance}">
+                            		<input id = "careinsurance" class="col-lg-5" type="text" name="careinsurance" value = "${ detail.careinsurance}">
                             	</div>  
                             	<div class="col-lg-6">
                             		<label class="col-lg-3">厚生年金</label>
-                            		<input class="col-lg-5" type="text" name="welfarepension" value = "${ detail.welfarepension}">
+                            		<input id = "welfarepension" class="col-lg-5" type="text" name="welfarepension" value = "${ detail.welfarepension}">
                             	</div>  
                             	<div class="col-lg-6">
                             		<label class="col-lg-3">年金基金</label>
-                            		<input class="col-lg-5" type="text" name="pensionfund" value = "${ detail.pensionfund}">
+                            		<input id = "pensionfund" class="col-lg-5" type="text" name="pensionfund" value = "${ detail.pensionfund}">
                             	</div>
                             	<div class="col-lg-6">
                             		<label class="col-lg-3">社保調整</label>
-                            		<input class="col-lg-5" type="text" name="adjustsocial" value = "${ detail.adjustsocial}">
+                            		<input id = "adjustsocial" class="col-lg-5" type="text" name="adjustsocial" value = "${ detail.adjustsocial}">
                             	</div>
                             	<div class="col-lg-6">
                             		<label class="col-lg-3">雇佣保險</label>
-                            		<input class="col-lg-5" type="text" name="employinsurance" value = "${ detail.employinsurance}">
+                            		<input id = "employinsurance" class="col-lg-5" type="text" name="employinsurance" value = "${ detail.employinsurance}">
                             	</div>
                             	<div class="col-lg-6">
                             		<label class="col-lg-3">法定控除計</label>
-                            		<input class="col-lg-5" type="text" name="legaldeduction" value = "${ detail.legaldeduction}">
+                            		<input id = "legaldeduction" class="col-lg-5" type="text" name="legaldeduction" value = "${ detail.legaldeduction}">
                             	</div>
                             	<div class="col-lg-6">
                             		<label class="col-lg-3">所得税</label>
-                            		<input class="col-lg-5" type="text" name="incometax" value = "${ detail.incometax}">
+                            		<input id = "incometax" class="col-lg-5" type="text" name="incometax" value = "${ detail.incometax}">
                             	</div>
                             	<div class="col-lg-6">
                             		<label class="col-lg-3">住民税</label>
-                            		<input class="col-lg-5" type="text" name="inlandtax" value = "${ detail.inlandtax}">
+                            		<input id = "inlandtax" class="col-lg-5" type="text" name="inlandtax" value = "${ detail.inlandtax}">
                             	</div>            
                                 <div class="col-lg-6">
                             		<label class="col-lg-3">扶養</label>
-                            		<input class="col-lg-5" type="text" name="dependnumber" value = "${ detail.dependnumber}">
+                            		<input id = "dependnumber" class="col-lg-5" type="text" name="dependnumber" value = "${ detail.dependnumber}">
                             	</div>
                             	<div class="col-lg-6">
                             		<label class="col-lg-3">控除合計</label>
-                            		<input class="col-lg-5" type="text" name="totaldeduction" value = "${ detail.totaldeduction}">
+                            		<input id = "totaldeduction" class="col-lg-5" type="text" name="totaldeduction" value = "${ detail.totaldeduction}">
                             	</div>
                             	<div class="col-lg-6">
                             		<label class="col-lg-3">调整</label>
-                            		<input class="col-lg-5" type="text" name="adjustsalary" value = "${ detail.adjustsalary}">
+                            		<input id = "adjustsalary" class="col-lg-5" type="text" name="adjustsalary" value = "${ detail.adjustsalary}">
                             	</div>
                             	<div class="col-lg-6">
                             		<label class="col-lg-3">控除総計</label>
-                            		<input class="col-lg-5" type="text" name="grandtotaldeduction" value = "${ detail.grandtotaldeduction}">
+                            		<input id = "grandtotaldeduction" class="col-lg-5" type="text" name="grandtotaldeduction" value = "${ detail.grandtotaldeduction}">
                             	</div>
                             	<div class="col-lg-6">
                             		<label class="col-lg-3">課税総額</label>
-                            		<input class="col-lg-5" type="text" name="totaltaxation" value = "${ detail.totaltaxation}">
+                            		<input id = "totaltaxation" class="col-lg-5" type="text" name="totaltaxation" value = "${ detail.totaltaxation}">
                             	</div>
                             	<div class="col-lg-6">
                             		<label class="col-lg-3">非課税総額</label>
-                            		<input class="col-lg-5" type="text" name="totaltaxexempt" value = "${ detail.totaltaxexempt}">
+                            		<input id = "totaltaxexempt" class="col-lg-5" type="text" name="totaltaxexempt" value = "${ detail.totaltaxexempt}">
                             	</div>
                             	<div class="col-lg-6">
                             		<label class="col-lg-3">差引支給額</label>
-                            		<input class="col-lg-5" type="text" name="substractionsupply" value = "${ detail.substractionsupply}">
+                            		<input id = "substractionsupply" class="col-lg-5" type="text" name="substractionsupply" value = "${ detail.substractionsupply}">
+                            	</div>
+                            	<div class="col-lg-6">
+                            		<label class="col-lg-3">年末調整額</label>
+                            		<input id = "yearendadjustment" class="col-lg-5" type="text" name="yearendadjustment" value = "${ detail.yearendadjustment}">
+                            	</div>
+                            	<div class="col-lg-6">
+                            		<label class="col-lg-3">特別奨励金</label>
+                            		<input id = "specialbounty" class="col-lg-5" type="text" name="specialbounty" value = "${ detail.specialbounty}">
+                            	</div>
+                            	<div class="col-lg-6">
+                            		<label class="col-lg-3">業績達成金</label>
+                            		<input id = "achievementmoney" class="col-lg-5" type="text" name="achievementmoney" value = "${ detail.achievementmoney}">
                             	</div>
                             	<div class="col-lg-10">
                             		<button class="btn btn-lg btn-primary" type="button" onclick="formSubmit()">确认</button>
+                            		<button  class="btn btn-lg btn-primary" >CSV入力<input id='file' type="file" onchange="upload(this)"/></button>
                             	</div> 
                             	</table>                            
                             </div>
                         </div>
-                        
                     </form>
                     </div>
-                    
 				</div>
            </div>    
         </div>

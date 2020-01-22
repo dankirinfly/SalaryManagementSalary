@@ -93,6 +93,7 @@
                                             <th>名前</th>
                                             <th>連絡先</th>
                                             <th>诞生日</th>
+                                            <th>登録日</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -104,6 +105,7 @@
                                             <td>${employee.employeename }</td>
                                             <td>${employee.employeecontact }</td>
                                             <td><input  type="date" name="employeebirth"  value = "${fn:substring(employee.employeebirth, 0, 10)}"/></td>
+                                        	<td ><input  type="date" name="employeeregisteredtime"  value = "${fn:substring(employee.employeeregisteredtime, 0, 10)}"/></td>
                                         </tr>
                                        </c:forEach>
                                     </tbody>

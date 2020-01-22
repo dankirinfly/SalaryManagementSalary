@@ -186,6 +186,18 @@
                             		<label class="col-lg-3">差引支給額</label>
                             		<input class="col-lg-5" type="text" name="substractionsupply" value = "${ detail.substractionsupply}">
                             	</div>
+                            	<div class="col-lg-6">
+                            		<label class="col-lg-3">年末調整額</label>
+                            		<input class="col-lg-5" type="text" name="yearendadjustment" value = "${ detail.yearendadjustment}">
+                            	</div>
+                            	<div class="col-lg-6">
+                            		<label class="col-lg-3">特別奨励金</label>
+                            		<input class="col-lg-5" type="text" name="specialbounty" value = "${ detail.specialbounty}">
+                            	</div>
+                            	<div class="col-lg-6">
+                            		<label class="col-lg-3">業績達成金</label>
+                            		<input class="col-lg-5" type="text" name="achievementmoney" value = "${ detail.achievementmoney}">
+                            	</div>
                             	<div class="col-lg-10">
                             	    <button type="button" class="btn btn-lg btn-primary"  onclick="detailtijiao()">確定</button>
                                     <button type="button" class="btn btn-lg btn-primary"  onclick="detailquxiao()">キャンセル</button>
@@ -213,6 +225,7 @@
                                             <th>名前</th>
                                             <th>連絡先</th>
                                             <th>诞生日</th>
+                                            <th>登録日</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -225,6 +238,7 @@
                                             <td><input type="text" name="employeename"  value = "${ employee.employeename}"></td>
                                             <td><input type="text" name="employeecontact"  value = "${ employee.employeecontact}"></td>
                                             <td><input class="col-lg-12" type="date" name="employeebirth"  value = "${fn:substring(employee.employeebirth, 0, 10)}"/></td>
+                                       		<td><input class="col-lg-12" type="date" name="employeeregisteredtime"  value = "${fn:substring(employee.employeeregisteredtime, 0, 10)}"/></td>
                                         </tr>
                                        
                                     </tbody>

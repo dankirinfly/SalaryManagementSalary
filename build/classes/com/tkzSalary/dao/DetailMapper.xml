@@ -34,6 +34,9 @@
     <result column="totalTaxExempt" jdbcType="INTEGER" property="totaltaxexempt" />
     <result column="monthTrafficExpense" jdbcType="INTEGER" property="monthtrafficexpense" />
     <result column="substractionSupply" jdbcType="INTEGER" property="substractionsupply" />
+    <result column="yearendadJustment" jdbcType="INTEGER" property="yearendadjustment" />
+    <result column="specialBounty" jdbcType="INTEGER" property="specialbounty" />
+    <result column="achievementMoney" jdbcType="INTEGER" property="achievementmoney" />
   </resultMap>
   <sql id="Base_Column_List">
     detailID, employeeID, workTime, payTime, workDays, attendanceDays, absenceDays, unemployedDays, 
@@ -41,7 +44,7 @@
     totalSalary, healthInsurance, careInsurance, welfarePension, pensionFund, adjustSocial, 
     employInsurance, legalDeduction, incomeTax, inlandTax, dependNumber, totalDeduction, 
     adjustSalary, grandTotalDeduction, totalTaxation, totalTaxExempt, monthTrafficExpense, 
-    substractionSupply
+    substractionSupply,yearendadJustment,specialBounty,achievementMoney
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
@@ -72,7 +75,8 @@
       legalDeduction, incomeTax, inlandTax, 
       dependNumber, totalDeduction, adjustSalary, 
       grandTotalDeduction, totalTaxation, totalTaxExempt, 
-      monthTrafficExpense, substractionSupply
+      monthTrafficExpense, substractionSupply,yearendadJustment,
+      specialBounty,achievementMoney
       )
     values (#{detailid,jdbcType=INTEGER}, #{employeeid,jdbcType=INTEGER}, #{worktime,jdbcType=DATE}, 
       #{paytime,jdbcType=DATE}, #{workdays,jdbcType=REAL}, #{attendancedays,jdbcType=REAL}, 
@@ -84,7 +88,8 @@
       #{legaldeduction,jdbcType=INTEGER}, #{incometax,jdbcType=INTEGER}, #{inlandtax,jdbcType=INTEGER}, 
       #{dependnumber,jdbcType=INTEGER}, #{totaldeduction,jdbcType=INTEGER}, #{adjustsalary,jdbcType=INTEGER}, 
       #{grandtotaldeduction,jdbcType=INTEGER}, #{totaltaxation,jdbcType=INTEGER}, #{totaltaxexempt,jdbcType=INTEGER}, 
-      #{monthtrafficexpense,jdbcType=INTEGER}, #{substractionsupply,jdbcType=INTEGER}
+      #{monthtrafficexpense,jdbcType=INTEGER}, #{substractionsupply,jdbcType=INTEGER}, #{yearendadjustment,jdbcType=INTEGER}
+      #{specialbounty,jdbcType=INTEGER}, #{achievementmoney,jdbcType=INTEGER}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.tkzSalary.pojo.Detail">

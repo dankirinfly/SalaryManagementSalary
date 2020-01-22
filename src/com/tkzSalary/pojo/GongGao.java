@@ -3,12 +3,13 @@ package com.tkzSalary.pojo;
 
 
 public class GongGao {
+	//公告id
     private Integer gonggaoid;
-
+    //公告标题
     private String gonggaotitle;
-
+    //公告内容
     private String gonggaoneirong;
-
+    //公告时间
     private String gonggaodate;
 
     public Integer getGonggaoid() {

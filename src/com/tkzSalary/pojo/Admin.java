@@ -1,10 +1,11 @@
 package com.tkzSalary.pojo;
 
 public class Admin {
+	//管理员id
     private Integer adminid;
-
+    //管理员账户
     private String adminaccount;
-
+    //管理员密码
     private String adminpassword;
 
     public Integer getAdminid() {
