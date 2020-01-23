@@ -127,7 +127,8 @@
       employeePassword = #{employeepassword,jdbcType=VARCHAR},
       employeeName = #{employeename,jdbcType=VARCHAR},
       employeeContact = #{employeecontact,jdbcType=VARCHAR},
-      employeeBirth = #{employeebirth,jdbcType=DATE}
+      employeeBirth = #{employeebirth,jdbcType=DATE},
+      employeeRegisteredTime = #{employeeregisteredtime,jdbcType=DATE}
     where employeeID = #{employeeid,jdbcType=INTEGER}
   </update>
 </mapper>
