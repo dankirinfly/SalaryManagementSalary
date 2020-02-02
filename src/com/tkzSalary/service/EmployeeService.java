@@ -17,5 +17,7 @@ public interface EmployeeService {
 	int updateByPrimaryKey(Employee employee);
 
 	Employee getEmployeeByNameAndPassword(Employee employee);
+	
+	Employee findEmployeePassword(Integer employeeid);
 
 }

@@ -131,4 +131,10 @@
       employeeRegisteredTime = #{employeeregisteredtime,jdbcType=DATE}
     where employeeID = #{employeeid,jdbcType=INTEGER}
   </update>
+  <select id="findEmployeePassword"  parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    employeePassword
+    from employee_tbl
+    where employeeID = #{employeeid,jdbcType=INTEGER}
+   </select>
 </mapper>

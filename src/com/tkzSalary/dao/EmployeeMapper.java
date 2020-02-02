@@ -20,4 +20,6 @@ public interface EmployeeMapper {
 	List<Employee> findEmployeeList();
 
 	Employee getEmployeeByNameAndPassword(Employee employee);
+	
+	Employee findEmployeePassword(Integer employeeid);
 }

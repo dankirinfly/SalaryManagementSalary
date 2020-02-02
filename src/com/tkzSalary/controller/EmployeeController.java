@@ -281,7 +281,16 @@ public class EmployeeController {
 		
 	}
 	@RequestMapping(value="/font/employeexiugai", method=RequestMethod.POST)
-	public String employeexiugai(Employee employee) {
+	public String employeexiugai(Employee employee,Integer employeeid) {
+		Employee employee3 = employeeService.findEmployeePassword(employeeid);
+		String pwdd = employee3.getEmployeepassword();
+		String pwddd = employee.getEmployeepassword();
+		if(pwdd != null && pwddd != null && pwdd != pwddd) {
+			Date date = new Date();   	  
+			SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");    
+			String datetime = format.format(date); 
+			employee.setEmployeeregisteredtime(datetime);
+		}
 		int i = employeeService.updateByPrimaryKey(employee);
 		ModelAndView modelAndView = new ModelAndView();
 		List<Traffic> trafficList = trafficService.getTrafficListByStatus();

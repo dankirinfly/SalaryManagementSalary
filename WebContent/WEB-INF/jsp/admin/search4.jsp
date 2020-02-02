@@ -104,7 +104,7 @@
                                 	<th>基本給       &emsp; &emsp;:&emsp;&emsp; ${detail.basicpay }</th>                                                                                   
                                 </tr>
                                 <tr class="">
-                                	<th>不定期料    &emsp;&nbsp;:&emsp; &emsp;${detail.trafficexpense }</th>                                        
+                                	<th>非定期料金 &nbsp;:&emsp;&emsp;&nbsp;${detail.trafficexpense }</th>                                        
                                 </tr>
                                 <tr class="">
 									<th>定期通勤料 &nbsp;:&emsp;&emsp;&nbsp;${detail.monthtrafficexpense }</th>                                                                                    

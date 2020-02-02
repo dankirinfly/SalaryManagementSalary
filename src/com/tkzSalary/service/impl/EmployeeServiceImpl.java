@@ -47,5 +47,10 @@ public class EmployeeServiceImpl implements EmployeeService {
 		// TODO Auto-generated method stub
 		return employeeMapper.getEmployeeByNameAndPassword(employee);
 	}
+	@Override
+	public Employee findEmployeePassword(Integer employeeid) {
+		// TODO Auto-generated method stub
+		return employeeMapper.findEmployeePassword(employeeid);
+	}
 
 }
