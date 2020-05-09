@@ -47,20 +47,20 @@ public class EmployeeController {
 		
 		Employee employee2 = employeeService.getEmployeeByNameAndPassword(employee);
 		//+90day
-//		String time1 = employee2.getEmployeeregisteredtime();
-//		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-//		Date date = format.parse(time1);
-//		Calendar c = Calendar.getInstance();
-//	    c.setTime(date);
-//	    c.add(Calendar.DATE, 90);
-//	    Date newDate = c.getTime();
-//		String enddate = format.format(newDate);
-//		employee.setEmployeejiushitime(enddate);
+		String time1 = employee2.getEmployeeregisteredtime();
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		Date date = format.parse(time1);
+		Calendar c = Calendar.getInstance();
+	    c.setTime(date);
+	    c.add(Calendar.DATE, 90);
+	    Date newDate = c.getTime();
+		String enddate = format.format(newDate);
+		employee.setEmployeejiushitime(enddate);
 		ModelAndView modelAndView = new ModelAndView();
 		if(employee2 != null) {
 			List<GongGao> gongGaoList = gongGaoService.findGongGaoList();
 			modelAndView.addObject("gongGaoList", gongGaoList);
-//			modelAndView.addObject("enddate", enddate);
+			modelAndView.addObject("enddate", enddate);
 			modelAndView.setViewName("font/font");
 			return modelAndView;
 		}

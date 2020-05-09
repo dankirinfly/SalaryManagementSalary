@@ -283,7 +283,7 @@
                             	</div>
                             	<div class="col-lg-10">
                             		<button class="btn btn-lg btn-primary" type="button" onclick="formSubmit()">确认</button>
-                            		<button  class="btn btn-lg btn-primary" >CSV入力<input id='file' type="file" onchange="upload(this)"/></button>
+                            		<button class="btn btn-lg btn-primary">CSV入力<input id='file'  type='file' onchange="upload(this)"/></button>
                             	</div> 
                             	</table>                            
                             </div>

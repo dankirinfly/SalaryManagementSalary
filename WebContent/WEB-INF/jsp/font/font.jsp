@@ -15,8 +15,8 @@
         <link href="${pageContext.request.contextPath }/css/stytle.css" rel="stylesheet" media="screen" />
        
     </head>
-<!-- 90天 -->
-<!-- <style type="text/css">
+<!-- 90天 
+ <style type="text/css">
 #winpop {
 	width: 200px;
 	height: 0px;
@@ -60,8 +60,8 @@
 	cursor: pointer
 }
 
-</style> -->
-<!-- <script type="text/javascript">
+</style> 
+ <script type="text/javascript">
 	function tips_pop() {
 		var MsgPop = document.getElementById("winpop");//获取窗口这个对象,即ID为winpop的对象 
 		var popH = parseInt(MsgPop.style.height);//用parseInt将对象的高度转化为数字,以方便下面比较 
@@ -176,13 +176,13 @@
                    </div> 
                 </div>
 
-			<%-- <div id="winpop">
+		<!--  	 <div id="winpop">
 				<div class="title">
 					ご注意ください<span class="close" onclick="tips_pop()">x</span>
 				</div>
 				<div class="con">建议您尽快更改密码</div>
 			</div>
-			<input type="hidden" id="enddate" name="enddate" value="${enddate}"> --%>
+			<input type="hidden" id="enddate" name="enddate" value="${enddate}"> -->
 			<div class="col-md-9">
 					
                     <div class="row" >
